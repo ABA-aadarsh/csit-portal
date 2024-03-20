@@ -1,0 +1,46 @@
+{
+    "subjects":[
+        {
+            "subjectCode":"CSC-114",
+            "name":"IIT",
+            "desc":"Learn about the basics of computer, different components of computer architecture and softwares.",
+            "semester":1,
+            "elective":false
+        },
+        {
+            "subjectCode":"CSC-116",
+            "name":"Digital Logic",
+            "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "semester":1,
+            "elective":false
+        },
+        {
+            "subjectCode":"PHY-117",
+            "name":"Physics",
+            "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "semester":1,
+            "elective":false
+        },
+        {
+            "subjectCode":"MTH-118",
+            "name":"Mathematics",
+            "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "semester":1,
+            "elective":false
+        },
+        {
+            "subjectCode":"CSC-115",
+            "name":"C Programming",
+            "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "semester":1,
+            "elective":false
+        },
+        {
+            "subjectCode":"CSC-119",
+            "name":"DSA",
+            "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "semester":2,
+            "elective":false
+        }
+    ]
+}
