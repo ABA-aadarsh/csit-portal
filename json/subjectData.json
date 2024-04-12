@@ -2,45 +2,129 @@
     "subjects":[
         {
             "subjectCode":"CSC-114",
-            "name":"IIT",
+            "name":"Introduction to Information Technology",
+            "subjectId":"iit",
             "desc":"Learn about the basics of computer, different components of computer architecture and softwares.",
             "semester":1,
-            "elective":false
+            "elective":false,
+            "lessons":[
+                {"name":"Introduction to Computers"},
+                {"name":"The Computer System Hardware"},
+                {"name":"Computer Memory"},
+                {"name":"Input and Output Devices"},
+                {"name":"Data Representations"},
+                {"name":"Computer Software"},
+                {"name":"The Internet and internet services"},
+                {"name":"Fundamentals of Database"},
+                {"name":"Multimedia"},
+                {"name":"Computer Security"},
+                {"name":"The Computer System Hardware"}
+            ]
         },
         {
             "subjectCode":"CSC-116",
             "name":"Digital Logic",
+            "subjectId":"digital-program",
             "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "semester":1,
-            "elective":false
+            "elective":false,
+            "lessons":[
+                {"name":"Introduction to Computers"},
+                {"name":"The Computer System Hardware"},
+                {"name":"Computer Memory"},
+                {"name":"Input and Output Devices"},
+                {"name":"Data Representations"},
+                {"name":"Computer Software"},
+                {"name":"The Internet and internet services"},
+                {"name":"Fundamentals of Database"},
+                {"name":"Multimedia"},
+                {"name":"Computer Security"},
+                {"name":"The Computer System Hardware"}
+            ]
         },
         {
             "subjectCode":"PHY-117",
             "name":"Physics",
+            "subjectId":"physics",
             "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "semester":1,
-            "elective":false
+            "elective":false,
+            "lessons":[
+                {"name":"Introduction to Computers"},
+                {"name":"The Computer System Hardware"},
+                {"name":"Computer Memory"},
+                {"name":"Input and Output Devices"},
+                {"name":"Data Representations"},
+                {"name":"Computer Software"},
+                {"name":"The Internet and internet services"},
+                {"name":"Fundamentals of Database"},
+                {"name":"Multimedia"},
+                {"name":"Computer Security"},
+                {"name":"The Computer System Hardware"}
+            ]
         },
         {
             "subjectCode":"MTH-118",
             "name":"Mathematics",
+            "subjectId":"math-1",
             "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "semester":1,
-            "elective":false
+            "elective":false,
+            "lessons":[
+                {"name":"Introduction to Computers"},
+                {"name":"The Computer System Hardware"},
+                {"name":"Computer Memory"},
+                {"name":"Input and Output Devices"},
+                {"name":"Data Representations"},
+                {"name":"Computer Software"},
+                {"name":"The Internet and internet services"},
+                {"name":"Fundamentals of Database"},
+                {"name":"Multimedia"},
+                {"name":"Computer Security"},
+                {"name":"The Computer System Hardware"}
+            ]
         },
         {
             "subjectCode":"CSC-115",
             "name":"C Programming",
+            "subjectId":"c-programming",
             "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "semester":1,
-            "elective":false
+            "elective":false,
+            "lessons":[
+                {"name":"Introduction to Computers"},
+                {"name":"The Computer System Hardware"},
+                {"name":"Computer Memory"},
+                {"name":"Input and Output Devices"},
+                {"name":"Data Representations"},
+                {"name":"Computer Software"},
+                {"name":"The Internet and internet services"},
+                {"name":"Fundamentals of Database"},
+                {"name":"Multimedia"},
+                {"name":"Computer Security"},
+                {"name":"The Computer System Hardware"}
+            ]
         },
         {
             "subjectCode":"CSC-119",
             "name":"DSA",
+            "subjectId":"dsa",
             "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "semester":2,
-            "elective":false
+            "elective":false,
+            "lessons":[
+                {"name":"Introduction to Computers"},
+                {"name":"The Computer System Hardware"},
+                {"name":"Computer Memory"},
+                {"name":"Input and Output Devices"},
+                {"name":"Data Representations"},
+                {"name":"Computer Software"},
+                {"name":"The Internet and internet services"},
+                {"name":"Fundamentals of Database"},
+                {"name":"Multimedia"},
+                {"name":"Computer Security"},
+                {"name":"The Computer System Hardware"}
+            ]
         }
     ]
 }

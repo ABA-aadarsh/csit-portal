@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-export const useSubjects=(semester)=>{
+export const useSemesterSubjects=(semester)=>{
     const fetchData=async (semester)=>{
-        const res=await fetch("/api/subjectData/"+semester)
+        const res=await fetch("/api/semesterSubjects/"+semester)
         const {subjects}=await res.json()
         setData([...subjects])
     }

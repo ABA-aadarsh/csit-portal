@@ -1,6 +1,6 @@
 "use client";
 import { Button, buttonVariants } from '@/components/ui/button';
-import { useSubjects } from '@/hooks/useSubjectData';
+import { useSemesterSubjects } from '@/hooks/useSemesterSubjects';
 import Navbar from '@/myComponents/Navbar/Navbar'
 import Link from 'next/link';
 import { redirect, useParams } from 'next/navigation'
@@ -12,7 +12,7 @@ function page() {
     if(!(['1','2','3','4','5','6','7','8'].includes(semester))){
         redirect("/semester")
     }
-    const [subjects]=useSubjects(semester)
+    const [subjects]=useSemesterSubjects(semester)
 
   return (
     <div>
@@ -33,7 +33,7 @@ function page() {
                                         <span className="text-sm">{i.subjectCode}</span>
                                     </div>
                                     <p>{i.desc}</p>
-                                    <Link href={"/subject/"+i.name} className={buttonVariants({variant:"secondary"})}>Learn</Link>
+                                    <Link href={"/subject/"+i.subjectId} className={buttonVariants({variant:"secondary"})}>Learn</Link>
                                 </div>
                             ))
                         }
