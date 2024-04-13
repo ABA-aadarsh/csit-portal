@@ -6,7 +6,7 @@ export const metadata= {
 
 function page() {
   return (
-    <div className='w-full h-dvh p-3'>
+    <div className='w-full h-dvh p-4'>
       <Editor/>
     </div>
   )

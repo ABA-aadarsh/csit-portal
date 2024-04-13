@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import isHotkey from 'is-hotkey'
 import { Editable, withReact, useSlate, Slate } from 'slate-react'
 import { Button } from '@/components/ui/button'
@@ -13,6 +13,8 @@ import { withHistory } from 'slate-history'
 import {  BiCode, BiSolidQuoteAltLeft } from 'react-icons/bi'
 import { GoListOrdered, GoListUnordered } from 'react-icons/go'
 import {  CiTextAlignCenter, CiTextAlignJustify, CiTextAlignLeft, CiTextAlignRight } from "react-icons/ci";
+import { Delete, DeleteIcon } from 'lucide-react'
+import { MdDelete } from 'react-icons/md'
 const HOTKEYS = {
   'mod+b': 'bold',
   'mod+i': 'italic',
@@ -43,84 +45,116 @@ const IconBtn=({format, children, nature="mark"})=>{
   )
 }
 
-const TextBox = ({id,update=({id,content})=>{}}) => {
+const TextBox = ({
+  id,
+  update=({id,content})=>{},
+  deleteItem=(id)=>{},
+  updateTitle=({id,title})=>{},
+  title=""
+}) => {
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
   const editor = useMemo(() => withHistory(withReact(createEditor())), [])
+  const [titleValue,setTitleValue]=useState(title)
 
   return (
-    <div className='p-4 border-2 shadow-border'>
-      <h1 className='text-xl mb-4'>Text Box</h1>
-      <Slate editor={editor} initialValue={initialValue}
-        onChange={value => {
-          const isAstChange = editor.operations.some(
-            op => 'set_selection' !== op.type
-          )
-          if (isAstChange) {
-            const content = JSON.stringify(value)
-            update({id,content})
-          }
-        }}
-      >
-        <div className='flex gap-2 flex-wrap mb-5'>
-          <IconBtn format={"bold"}>
-            B
-          </IconBtn>
-          <IconBtn format={"italic"}>
-            <i>i</i>
-          </IconBtn>
-          <IconBtn format={"underline"}>
-            _
-          </IconBtn>
-          <IconBtn format={"code"}>
-            <BiCode/>
-          </IconBtn>
-          <IconBtn format="heading-one" nature='block'>
-            H1
-          </IconBtn>
-          <IconBtn format="heading-two">
-            H2
-          </IconBtn>
-          <IconBtn format="block-quote" >
-            <BiSolidQuoteAltLeft/>
-          </IconBtn>
-          <IconBtn format={"numbered-list"} nature='block'>
-            <GoListOrdered/>
-          </IconBtn>
-          <IconBtn format={"bulleted-list"} nature='block'>
-            <GoListUnordered/>
-          </IconBtn>
-          <IconBtn format={"left"} nature='block'>
-            <CiTextAlignLeft/>
-          </IconBtn>
-          <IconBtn format={"center"} nature='block'>
-            <CiTextAlignCenter/>
-          </IconBtn>
-          <IconBtn format={"right"} nature='block'>
-            <CiTextAlignRight/>
-          </IconBtn>
-          <IconBtn format={"justify"} nature='block'>
-            <CiTextAlignJustify/>
-          </IconBtn>
+    <div className='border-2 shadow-border rounded-lg overflow-hidden' id={id}>
+      <div className='p-1 bg-blue-400 w-full flex gap-6'>
+        <div className=''>
+          <Button variant="primary" className="text-white h-[5px]" title="delete"
+            onClick={()=>{
+              deleteItem(id)
+            }}
+          ><MdDelete/></Button>
         </div>
-        <Editable
-          className='outline-none'
-          renderElement={renderElement}
-          renderLeaf={renderLeaf}
-          placeholder="Enter some rich text…"
-          spellCheck
-          autoFocus
-          onKeyDown={event => {
-            for (const hotkey in HOTKEYS) {
-              if (isHotkey(hotkey, event)) {
-                event.preventDefault()
-                const mark = HOTKEYS[hotkey]
-                toggleMark(editor, mark)
-              }
+        <form onSubmit={(e)=>{
+          e.preventDefault()
+          updateTitle({id,title:titleValue})
+        }}>
+          <input type="text" value={titleValue} onChange={(e)=>{setTitleValue(e.currentTarget.value)}}
+            className='pl-1 bg-transparent outline-none rounded-md text-slate-600'
+          />
+          <Button variant="primary" className="text-white h-[10px]" title="save"
+            type="submit"
+          >Save</Button>
+        </form>
+      </div>
+      <div className='p-4'>
+        <div className='mb-4 flex gap-4 items-center'>
+          <h1 className='text-xl'>Text Box</h1>
+          <p className='text-zinc-400 text-sm'>{id}</p>
+        </div>
+        <Slate editor={editor} initialValue={initialValue}
+          onChange={value => {
+            const isAstChange = editor.operations.some(
+              op => 'set_selection' !== op.type
+            )
+            if (isAstChange) {
+              const content = JSON.stringify(value)
+              update({id,content})
             }
           }}
-        />
-      </Slate>
+        >
+          <div className='flex gap-2 flex-wrap mb-5'>
+            <IconBtn format={"bold"}>
+              B
+            </IconBtn>
+            <IconBtn format={"italic"}>
+              <i>i</i>
+            </IconBtn>
+            <IconBtn format={"underline"}>
+              _
+            </IconBtn>
+            <IconBtn format={"code"}>
+              <BiCode/>
+            </IconBtn>
+            <IconBtn format="heading-one" nature='block'>
+              H1
+            </IconBtn>
+            <IconBtn format="heading-two">
+              H2
+            </IconBtn>
+            <IconBtn format="block-quote" >
+              <BiSolidQuoteAltLeft/>
+            </IconBtn>
+            <IconBtn format={"numbered-list"} nature='block'>
+              <GoListOrdered/>
+            </IconBtn>
+            <IconBtn format={"bulleted-list"} nature='block'>
+              <GoListUnordered/>
+            </IconBtn>
+            <IconBtn format={"left"} nature='block'>
+              <CiTextAlignLeft/>
+            </IconBtn>
+            <IconBtn format={"center"} nature='block'>
+              <CiTextAlignCenter/>
+            </IconBtn>
+            <IconBtn format={"right"} nature='block'>
+              <CiTextAlignRight/>
+            </IconBtn>
+            <IconBtn format={"justify"} nature='block'>
+              <CiTextAlignJustify/>
+            </IconBtn>
+          </div>
+          <Editable
+            className='outline-none'
+            renderElement={renderElement}
+            renderLeaf={renderLeaf}
+            placeholder="Enter some rich text…"
+            spellCheck
+            autoFocus
+            onKeyDown={event => {
+              for (const hotkey in HOTKEYS) {
+                if (isHotkey(hotkey, event)) {
+                  event.preventDefault()
+                  const mark = HOTKEYS[hotkey]
+                  toggleMark(editor, mark)
+                }
+              }
+            }}
+          />
+        </Slate>
+      </div>
     </div>
   )
 }
