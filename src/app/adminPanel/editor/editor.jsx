@@ -5,6 +5,7 @@ import TextBox from './boxes/TextBox';
 import EqnBox from './boxes/EqnBox';
 import ImageBox from './boxes/ImageBox';
 import { v4 as uuidv4 } from 'uuid';
+import CodeBox from './boxes/CodeBox';
 
 function scrollToElement(id) {
   const element = document.getElementById(id);
@@ -85,6 +86,30 @@ function Editor() {
       return [...prev]
     })
   }
+  const createCodeBox=()=>{
+    const id=uuidv4()
+    setDatajson(prev=>(
+      [
+        ...prev,
+        {
+          id: id,
+          type:"code",
+          title:"untitled code",
+          language:"html",
+          code:""
+        }
+      ]
+    ))
+    setIdsList(prev=>[...prev,id])
+  }
+  const updateCode=({id,code,language})=>{
+    setDatajson(prev=>{
+      const o = prev.findIndex(_=>_.id==id)
+      prev[o].code=code
+      prev[o].language=language
+      return [...prev]
+    })
+  }
   const deleteItem=(id)=>{
     setIdsList(prev=>prev.filter((_)=>_!=id))
     setDatajson(prev=>{
@@ -98,6 +123,19 @@ function Editor() {
       return [...prev]
     })
   }
+  const moveComponent=({id,up})=>{
+    const o = idsList.findIndex(_=>_==id)
+    if((o==0 && up==true) || (o==(idsList.length-1) && up==false)){
+      return
+    }
+    idsList.splice(o,1)
+    if(up==true){
+      idsList.splice(o-1,0,id)
+    }else{
+      idsList.splice(o+1,0,id)
+    }
+    setIdsList([...idsList])
+  }
   return (
     <div>
       <Button variant={"secondary"} onClick={()=>console.log(datajson)} className="mb-3">Log Data</Button>
@@ -109,7 +147,7 @@ function Editor() {
           <Button variant={"outline"} onClick={()=>{createEqnBox()}}>Eqn</Button>
           <Button variant={"outline"}>Recommended Links</Button>
           <Button variant={"outline"} onClick={()=>{createImageBox()}}>Image</Button>
-          <Button variant={"outline"}>Code</Button>
+          <Button variant={"outline"} onClick={()=>{createCodeBox()}}>Code</Button>
         </ul>
       </div>
       <div className='flex gap-3 min-h-[500px] relative py-2'>
@@ -129,7 +167,7 @@ function Editor() {
             }
           </ul>
         </div>
-        <div className='flex flex-col gap-4 flex-grow'>
+        <div className='flex flex-col gap-4 flex-grow '>
           {/* {
             datajson.map((i,_)=>{
               switch(i.type){
@@ -150,11 +188,21 @@ function Editor() {
               const object=datajson.find(x=>x.id==id)
               switch(object.type){
                 case "text":
-                  return <TextBox id={id} key={id} update={updateText} deleteItem={deleteItem} title={object.title} updateTitle={updateTitle}/>
+                  return <TextBox id={id} key={id} update={updateText} deleteItem={deleteItem} title={object.title} updateTitle={updateTitle}
+                    moveComponent={moveComponent}
+                  />
                 case "eqn":
-                  return <EqnBox latex={object.latex} key={id} id={id} update={updateEqn} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}/>;
+                  return <EqnBox key={id} id={id} update={updateEqn} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
+                    moveComponent={moveComponent}
+                  />;
                 case "image":
-                  return <ImageBox key={id} id={id} update={updateImage} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}/>
+                  return <ImageBox key={id} id={id} update={updateImage} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
+                    moveComponent={moveComponent}
+                  />
+                case "code":
+                  return <CodeBox key={id} id={id} update={updateCode} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
+                    moveComponent={moveComponent}
+                  />
                 default:
                   return <Fragment key={id}></Fragment>;
               }

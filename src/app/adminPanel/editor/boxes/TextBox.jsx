@@ -13,8 +13,9 @@ import { withHistory } from 'slate-history'
 import {  BiCode, BiSolidQuoteAltLeft } from 'react-icons/bi'
 import { GoListOrdered, GoListUnordered } from 'react-icons/go'
 import {  CiTextAlignCenter, CiTextAlignJustify, CiTextAlignLeft, CiTextAlignRight } from "react-icons/ci";
-import { Delete, DeleteIcon } from 'lucide-react'
+import { Delete, DeleteIcon, MoveDown, MoveUp } from 'lucide-react'
 import { MdDelete } from 'react-icons/md'
+import Topbar from './components/Topbar'
 const HOTKEYS = {
   'mod+b': 'bold',
   'mod+i': 'italic',
@@ -50,35 +51,22 @@ const TextBox = ({
   update=({id,content})=>{},
   deleteItem=(id)=>{},
   updateTitle=({id,title})=>{},
-  title=""
+  title="",
+  moveComponent=({id,up})=>{}
 }) => {
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
   const editor = useMemo(() => withHistory(withReact(createEditor())), [])
-  const [titleValue,setTitleValue]=useState(title)
 
   return (
     <div className='border-2 shadow-border rounded-lg overflow-hidden' id={id}>
-      <div className='p-1 bg-blue-400 w-full flex gap-6'>
-        <div className=''>
-          <Button variant="primary" className="text-white h-[5px]" title="delete"
-            onClick={()=>{
-              deleteItem(id)
-            }}
-          ><MdDelete/></Button>
-        </div>
-        <form onSubmit={(e)=>{
-          e.preventDefault()
-          updateTitle({id,title:titleValue})
-        }}>
-          <input type="text" value={titleValue} onChange={(e)=>{setTitleValue(e.currentTarget.value)}}
-            className='pl-1 bg-transparent outline-none rounded-md text-slate-600'
-          />
-          <Button variant="primary" className="text-white h-[10px]" title="save"
-            type="submit"
-          >Save</Button>
-        </form>
-      </div>
+      <Topbar
+        deleteItem={deleteItem}
+        moveComponent={moveComponent}
+        title={title}
+        updateTitle={updateTitle}
+        id={id}
+      />
       <div className='p-4'>
         <div className='mb-4 flex gap-4 items-center'>
           <h1 className='text-xl'>Text Box</h1>

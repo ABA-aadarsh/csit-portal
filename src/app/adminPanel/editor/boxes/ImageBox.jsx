@@ -2,12 +2,12 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button';
-import { MdDelete } from 'react-icons/md';
+import Topbar from './components/Topbar';
 const tailwindclasses = {
     input: "p-2 shadow-border border-2 rounded-md",
     inputSpan: "text-zinc-500"
 }
-function ImageBox({ id, update = ({ id, props }) => { } , title, updateTitle=({id,title})=>{},deleteItem=(id)=>{}}) {
+function ImageBox({ id, update = ({ id, props }) => { } , title, updateTitle=({id,title})=>{},deleteItem=(id)=>{},moveComponent}) {
     const [props, setProps] = useState(
         {
             src: "/next.svg",
@@ -16,30 +16,16 @@ function ImageBox({ id, update = ({ id, props }) => { } , title, updateTitle=({i
             alt: "A template alt"
         }
     )
-    const [titleValue,setTitleValue]=useState(title)
     return (
         <div className='border-2 shadow-border rounded-lg overflow-hidden'
         id={id}>
-            <div className='p-1 bg-blue-400 w-full flex gap-6'>
-                <div className=''>
-                    <Button variant="primary" className="text-white h-[5px]" title="delete"
-                        onClick={() => {
-                            deleteItem(id)
-                        }}
-                    ><MdDelete /></Button>
-                </div>
-                <form onSubmit={e => {
-                    e.preventDefault()
-                    updateTitle({ id, title: titleValue })
-                }}>
-                    <input type="text" value={titleValue} onChange={(e) => { setTitleValue(e.currentTarget.value) }}
-                        className='pl-1 bg-transparent outline-none rounded-md text-slate-600'
-                    />
-                    <Button variant="primary" className="text-white h-[10px]" title="save"
-                        type="submit"
-                    >Save</Button>
-                </form>
-            </div>
+            <Topbar
+                deleteItem={deleteItem}
+                moveComponent={moveComponent}
+                title={title}
+                updateTitle={updateTitle}
+                id={id}
+            />
             <div className='p-3 shadow-border border-2'>
                 <div className='mb-4 flex gap-4 items-center'>
                     <h1 className='text-xl'>Image</h1>
