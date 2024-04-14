@@ -6,6 +6,9 @@ import EqnBox from './boxes/EqnBox';
 import ImageBox from './boxes/ImageBox';
 import { v4 as uuidv4 } from 'uuid';
 import CodeBox from './boxes/CodeBox';
+import PrismLoader from './boxes/components/PrismContinuousRenderer';
+import { Switch } from '@/components/ui/switch';
+
 
 function scrollToElement(id) {
   const element = document.getElementById(id);
@@ -16,6 +19,7 @@ function scrollToElement(id) {
 
 function Editor() {
   const [datajson, setDatajson]=useState([])
+  const [prismCheckerEnable,setPrismCheckerEnable]=useState(false)
   const [idsList,setIdsList]=useState([]) // store the ids of the objects and run the iteration on that basis so that unnecessary rendering of other componenet is not done when one componenet is being changed
   const createTextBox=()=>{
     const id=uuidv4()
@@ -138,7 +142,13 @@ function Editor() {
   }
   return (
     <div>
-      <Button variant={"secondary"} onClick={()=>console.log(datajson)} className="mb-3">Log Data</Button>
+      <div className='flex gap-2 items-center'>
+        <Button variant={"secondary"} onClick={()=>console.log(datajson)} className="mb-3">Log Data</Button>
+        <div className='flex gap-1 items-center'>
+          <Switch id="enablePrismChecker" checked={prismCheckerEnable} onCheckedChange={()=>setPrismCheckerEnable(prev=>!prev)}/>
+          <label htmlFor="enablePrismChecker">Prism Checker</label>
+        </div>
+      </div>
       <div className='mb-4'>
         <ul className='flex gap-1 items-center'>
           <span className='text-zinc-500 text-sm block mr-2'>Create</span>
@@ -210,6 +220,7 @@ function Editor() {
           }
         </div>
       </div>
+      <PrismLoader checker={datajson} enable={prismCheckerEnable}/>
     </div>
   )
 }
