@@ -10,6 +10,7 @@ import PrismLoader from './boxes/components/PrismContinuousRenderer';
 import { Switch } from '@/components/ui/switch';
 import VideoBox from './boxes/VideoBox';
 import { componentHandler } from './boxes/hooks/componentHandler';
+import RecommendedLinksBox from './boxes/RecommendedLinksBox';
 
 
 function scrollToElement(id) {
@@ -24,7 +25,7 @@ function Editor() {
   const [prismCheckerEnable,setPrismCheckerEnable]=useState(false)
   const [idsList,setIdsList]=useState([]) // store the ids of the objects and run the iteration on that basis so that unnecessary rendering of other componenet is not done when one componenet is being changed
   const {
-    createComponent,deleteItem,moveComponent,updateCode,updateEqn,updateImage,updateText,updateTitle,updateVideo
+    createComponent,deleteItem,moveComponent,updateCode,updateEqn,updateImage,updateText,updateTitle,updateVideo,updateRecommendedLinkss
   }=componentHandler({idsList,datajson,setDatajson,setIdsList})
 
   return (
@@ -42,7 +43,7 @@ function Editor() {
           <Button variant={"outline"} onClick={()=>{createComponent("text")}}>Text</Button>
           <Button variant={"outline"} onClick={()=>{createComponent("video")}}>Video Panel</Button>
           <Button variant={"outline"} onClick={()=>{createComponent("eqn")}}>Eqn</Button>
-          <Button variant={"outline"}>Recommended Links</Button>
+          <Button variant={"outline"} onClick={()=>{createComponent("recommendedLinks")}}>Recommended Links</Button>
           <Button variant={"outline"} onClick={()=>{createComponent("image")}}>Image</Button>
           <Button variant={"outline"} onClick={()=>{createComponent("code")}}>Code</Button>
         </ul>
@@ -104,6 +105,11 @@ function Editor() {
                   return <VideoBox key={id} id={id} update={updateVideo} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
                     moveComponent={moveComponent}
                   />
+                case "recommendedLinks":
+                  console.log("recommendation link should be up here")
+                  return <RecommendedLinksBox key={id} id={id} update={updateRecommendedLinkss} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
+                  moveComponent={moveComponent}
+                />
                 default:
                   return <Fragment key={id}></Fragment>;
               }

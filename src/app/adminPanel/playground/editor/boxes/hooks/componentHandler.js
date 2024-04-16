@@ -43,6 +43,14 @@ export const componentHandler=({idsList,setIdsList,datajson,setDatajson})=>{
                         width:"",height:"",src:"", alt:""
                     }
                 }
+                break;
+            case "recommendedLinks":
+                obj={
+                    type:"recommendedLinks",
+                    title:"links topic",
+                    list:[]
+                }
+                break
             default:
                 return
         }
@@ -69,6 +77,13 @@ export const componentHandler=({idsList,setIdsList,datajson,setDatajson})=>{
           const o = prev.findIndex(_=>_.id==id)
           prev[o].code=code
           prev[o].language=language
+          return [...prev]
+        })
+    }
+    const updateRecommendedLinks=({id,list})=>{
+        setDatajson(prev=>{
+          const o = prev.findIndex(_=>_.id==id)
+          prev[o].list=list
           return [...prev]
         })
     }
@@ -119,5 +134,5 @@ export const componentHandler=({idsList,setIdsList,datajson,setDatajson})=>{
         }
         setIdsList([...idsList])
     }
-    return {createComponent,deleteItem,moveComponent,updateCode,updateEqn,updateImage,updateText,updateTitle,updateVideo}
+    return {createComponent,deleteItem,moveComponent,updateCode,updateEqn,updateImage,updateText,updateTitle,updateVideo,updateRecommendedLinks}
 }

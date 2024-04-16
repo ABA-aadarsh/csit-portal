@@ -1,13 +1,13 @@
 import React from 'react'
-import Editor from './editor/editor'
+import Playground from './playground/playground';
 export const metadata= {
-  title: 'Editor Panel',
+  title: 'Playground',
 };
 
 function page() {
   return (
     <div className='w-full h-dvh p-4'>
-      <Editor/>
+      <Playground/>
     </div>
   )
 }

@@ -14,6 +14,7 @@ function VideoBox(
         moveComponent
     }
 ) {
+    const [src,setSrc]=useState("")
     const [list, setList] = useState([])
     useEffect(()=>{
         console.log(list)
@@ -50,15 +51,15 @@ function VideoBox(
                 <div>
                     <form onSubmit={(e)=>{
                         e.preventDefault()
-                        const form=e.target
-                        setList(prev=>[...prev,{id:Date.now(),videoId:form.elements["videoId"].value}])
-
-                        // form.elements["videoId"].value=""
+                        setList(prev=>[...prev,{id:Date.now(),videoId:src}])
+                        setSrc("")
                     }}
                         className='mb-4'
                     >
                         <div className='flex gap-2'>
                             <input type="text" name='videoId' 
+                                value={src}
+                                onChange={(e)=>setSrc(e.currentTarget.value)}
                                 placeholder={"Enter Youtube Video ID"}
                             className='border-2 border-slate-500 p-2 rounded-md outline-none w-1/3'/>
                             <input type="submit" value="Add" className={buttonVariants({variant:"outline"})}/>
