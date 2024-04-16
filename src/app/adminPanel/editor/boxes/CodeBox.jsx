@@ -46,7 +46,20 @@ function CodeBox({ id, update = ({ id, code, language }) => { }, title, updateTi
                 </select>
             </div>
             <div className='flex gap-2 px-2 max-h-[300px] overflow-scroll mb-2'>
-                <textarea name="code write" id="" cols="30" rows="10" className='w-full outline-none border-0 p-2 border-zinc-400' onChange={(e) =>{ setCode(e.target.value);update({id,code,language})}} value={code}></textarea>
+                <textarea name="code write" id="" cols="30" rows="10" className='w-full outline-none border-0 p-2 border-zinc-400' 
+                    onChange={(e) =>{ setCode(e.target.value);update({id,code,language})}} value={code}
+                    onKeyDown={(e)=>{
+                        if(e.key=="Tab"){
+                            e.preventDefault()
+                            const start=e.target.selectionStart
+                            const end=e.target.selectionEnd
+                            e.target.value=e.target.value.substring(0, start) + "\t" + e.target.value.substring(end);
+                            e.target.selectionStart=e.target.selectionEnd=start+1
+                        }
+                    }
+                }
+                spellCheck={false}
+                ></textarea>
                 <div className='w-full'>
                     <pre className={`language-${language} !mt-0`}>
                         <code className={`language-${language} mt-0`}>

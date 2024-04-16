@@ -8,6 +8,8 @@ import { v4 as uuidv4 } from 'uuid';
 import CodeBox from './boxes/CodeBox';
 import PrismLoader from './boxes/components/PrismContinuousRenderer';
 import { Switch } from '@/components/ui/switch';
+import VideoBox from './boxes/VideoBox';
+import { componentHandler } from './boxes/hooks/componentHandler';
 
 
 function scrollToElement(id) {
@@ -21,125 +23,10 @@ function Editor() {
   const [datajson, setDatajson]=useState([])
   const [prismCheckerEnable,setPrismCheckerEnable]=useState(false)
   const [idsList,setIdsList]=useState([]) // store the ids of the objects and run the iteration on that basis so that unnecessary rendering of other componenet is not done when one componenet is being changed
-  const createTextBox=()=>{
-    const id=uuidv4()
-    setDatajson(prev=>(
-      [...prev,
-        {
-          id: id,
-          type: "text",
-          title:"untitled text",
-          props:{
-            content:"Start writing now ..."
-          }
-        }
-      ]
-    ))
-    setIdsList(prev=>[...prev,id])
-  }
-  const updateText=({id,content})=>{
-    setDatajson(prev=>{
-      const o = prev.findIndex(_=>_.id==id)
-      prev[o].props.content=content
-      return [...prev]
-    })
-  }
-  const createEqnBox=()=>{
-    const id=uuidv4()
-    setDatajson(prev=>(
-      [
-        ...prev,
-        {
-          id: id,
-          type:"eqn",
-          title:"untitled eqn",
-          latex:""
-        }
-      ]
-    ))
-    setIdsList(prev=>[...prev,id])
-  }
-  const updateEqn=({id,latex})=>{
-    setDatajson(prev=>{
-      const o = prev.findIndex(_=>_.id==id)
-      prev[o].latex=latex
-      return [...prev]
-    })
-  }
-  const createImageBox=()=>{
-    const id=uuidv4()
-    setDatajson(prev=>(
-      [
-        ...prev,
-        {
-          id: id,
-          type:"image",
-          title:"untitled image",
-          props:{
-            width:"",height:"",src:"", alt:""
-          }
-        }
-      ]
-    ))
-    setIdsList(prev=>[...prev,id])
-  }
-  const updateImage=({id,props})=>{
-    setDatajson(prev=>{
-      const o = prev.findIndex(_=>_.id==id)
-      prev[o].props=props
-      return [...prev]
-    })
-  }
-  const createCodeBox=()=>{
-    const id=uuidv4()
-    setDatajson(prev=>(
-      [
-        ...prev,
-        {
-          id: id,
-          type:"code",
-          title:"untitled code",
-          language:"html",
-          code:""
-        }
-      ]
-    ))
-    setIdsList(prev=>[...prev,id])
-  }
-  const updateCode=({id,code,language})=>{
-    setDatajson(prev=>{
-      const o = prev.findIndex(_=>_.id==id)
-      prev[o].code=code
-      prev[o].language=language
-      return [...prev]
-    })
-  }
-  const deleteItem=(id)=>{
-    setIdsList(prev=>prev.filter((_)=>_!=id))
-    setDatajson(prev=>{
-      return prev.filter(_=>_.id!=id)
-    })
-  }
-  const updateTitle=({id, title})=>{
-    setDatajson(prev=>{
-      const o=prev.find(_=>_.id==id)
-      o.title=title
-      return [...prev]
-    })
-  }
-  const moveComponent=({id,up})=>{
-    const o = idsList.findIndex(_=>_==id)
-    if((o==0 && up==true) || (o==(idsList.length-1) && up==false)){
-      return
-    }
-    idsList.splice(o,1)
-    if(up==true){
-      idsList.splice(o-1,0,id)
-    }else{
-      idsList.splice(o+1,0,id)
-    }
-    setIdsList([...idsList])
-  }
+  const {
+    createComponent,deleteItem,moveComponent,updateCode,updateEqn,updateImage,updateText,updateTitle,updateVideo
+  }=componentHandler({idsList,datajson,setDatajson,setIdsList})
+
   return (
     <div>
       <div className='flex gap-2 items-center'>
@@ -152,12 +39,12 @@ function Editor() {
       <div className='mb-4'>
         <ul className='flex gap-1 items-center'>
           <span className='text-zinc-500 text-sm block mr-2'>Create</span>
-          <Button variant={"outline"} onClick={()=>{createTextBox()}}>Text</Button>
-          <Button variant={"outline"}>Video Panel</Button>
-          <Button variant={"outline"} onClick={()=>{createEqnBox()}}>Eqn</Button>
+          <Button variant={"outline"} onClick={()=>{createComponent("text")}}>Text</Button>
+          <Button variant={"outline"} onClick={()=>{createComponent("video")}}>Video Panel</Button>
+          <Button variant={"outline"} onClick={()=>{createComponent("eqn")}}>Eqn</Button>
           <Button variant={"outline"}>Recommended Links</Button>
-          <Button variant={"outline"} onClick={()=>{createImageBox()}}>Image</Button>
-          <Button variant={"outline"} onClick={()=>{createCodeBox()}}>Code</Button>
+          <Button variant={"outline"} onClick={()=>{createComponent("image")}}>Image</Button>
+          <Button variant={"outline"} onClick={()=>{createComponent("code")}}>Code</Button>
         </ul>
       </div>
       <div className='flex gap-3 min-h-[500px] relative py-2'>
@@ -211,6 +98,10 @@ function Editor() {
                   />
                 case "code":
                   return <CodeBox key={id} id={id} update={updateCode} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
+                    moveComponent={moveComponent}
+                  />
+                case "video":
+                  return <VideoBox key={id} id={id} update={updateVideo} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
                     moveComponent={moveComponent}
                   />
                 default:
