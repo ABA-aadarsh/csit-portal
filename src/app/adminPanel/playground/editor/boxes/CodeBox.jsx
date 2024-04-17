@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Topbar from './components/Topbar';
 
 function CodeBox({ id, update = ({ id, code, language }) => { }, title, updateTitle = ({ id, title }) => { }, deleteItem = (id) => { }, moveComponent }) {
-    const [code, setCode] = useState("console.log('hello world')")
+    const [code, setCode] = useState("")
     const languageOptions=[
         {lang:"Javascript",code:"javascript"},
         {lang:"HTML",code:"html"},
