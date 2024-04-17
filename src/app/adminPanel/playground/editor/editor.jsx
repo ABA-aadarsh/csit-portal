@@ -20,8 +20,7 @@ function scrollToElement(id) {
   }
 }
 
-function Editor() {
-  const [datajson, setDatajson]=useState([])
+function Editor({datajson,setDatajson}) {
   const [prismCheckerEnable,setPrismCheckerEnable]=useState(false)
   const [idsList,setIdsList]=useState([]) // store the ids of the objects and run the iteration on that basis so that unnecessary rendering of other componenet is not done when one componenet is being changed
   const {

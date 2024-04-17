@@ -225,13 +225,13 @@ const Element = ({ attributes, children, element }) => {
       )
     case 'bulleted-list':
       return (
-        <ul style={style} {...attributes}>
+        <ul style={style} {...attributes} className='px-2 list-disc list-inside pl-2 my-3'>
           {children}
         </ul>
       )
     case 'heading-one':
       return (
-        <h1 style={style} {...attributes}>
+        <h1 style={style} {...attributes} className='text-2xl text-rose-500 font-medium my-3 tracking-wide'>
           {children}
         </h1>
       )
@@ -243,19 +243,19 @@ const Element = ({ attributes, children, element }) => {
       )
     case 'list-item':
       return (
-        <li style={style} {...attributes}>
+        <li style={style} {...attributes} >
           {children}
         </li>
       )
     case 'numbered-list':
       return (
-        <ol style={style} {...attributes}>
+        <ol style={style} {...attributes} className='list-decimal list-inside pl-2 my-3'>
           {children}
         </ol>
       )
     default:
       return (
-        <p style={style} {...attributes}>
+        <p style={style} {...attributes} className='mb-2'>
           {children}
         </p>
       )
@@ -264,11 +264,11 @@ const Element = ({ attributes, children, element }) => {
 
 const Leaf = ({ attributes, children, leaf }) => {
   if (leaf.bold) {
-    children = <strong>{children}</strong>
+    children = <span className='font-semibold'>{children}</span>
   }
 
   if (leaf.code) {
-    children = <code>{children}</code>
+    children = <code className='bg-[#e5ebf0] rounded-sm p-1 text-[#000000b2] font-thin'>{children}</code>
   }
 
   if (leaf.italic) {

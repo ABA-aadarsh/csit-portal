@@ -9,7 +9,16 @@ export const componentHandler=({idsList,setIdsList,datajson,setDatajson})=>{
                     type: "text",
                     title:"untitled text",
                     props:{
-                      content:"Start writing now ..."
+                      content:JSON.stringify([
+                        {
+                          type: 'paragraph',
+                          children: [
+                            {
+                              text: "Start writing now ... ",
+                            }
+                          ],
+                        }
+                      ])
                     }
                 }
                 break;

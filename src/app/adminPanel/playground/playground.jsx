@@ -1,11 +1,13 @@
 "use client";
 import { Button } from '@/components/ui/button'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Renderer from './renderer/renderer';
 import Editor from './editor/editor';
 
 function Playground() {
     const [activeTab,setActiveTab]=useState("editor")
+    const [datajson,setDatajson]=useState([])
+    const [previewData,setPreviewData]=useState([])
   return (
     <div>
         <div className='p-2 flex justify-end'>
@@ -23,6 +25,7 @@ function Playground() {
                     onClick={
                         ()=>{
                             setActiveTab("preview")
+                            setPreviewData([...datajson])
                         }
                     }
                 >
@@ -32,10 +35,10 @@ function Playground() {
         </div>
         <div>
             <div className={`${activeTab=="preview"?"block":"hidden"}`}>
-                <Renderer />
+                <Renderer data={previewData}/>
             </div>
             <div className={`${activeTab=="editor"?"block":"hidden"}`}>
-                <Editor />
+                <Editor datajson={datajson} setDatajson={setDatajson}/>
             </div>
         </div>
     </div>
