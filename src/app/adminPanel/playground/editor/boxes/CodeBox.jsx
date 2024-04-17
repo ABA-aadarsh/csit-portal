@@ -47,7 +47,7 @@ function CodeBox({ id, update = ({ id, code, language }) => { }, title, updateTi
             </div>
             <div className='flex gap-2 px-2 max-h-[300px] overflow-scroll mb-2'>
                 <textarea name="code write" id="" cols="30" rows="10" className='w-full outline-none border-0 p-2 border-zinc-400' 
-                    onChange={(e) =>{ setCode(e.target.value);update({id,code,language})}} value={code}
+                    onChange={(e) =>{ setCode(e.target.value);update({id,code:e.target.value,language})}} value={code}
                     onKeyDown={(e)=>{
                         if(e.key=="Tab"){
                             e.preventDefault()

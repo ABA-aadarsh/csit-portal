@@ -1,5 +1,7 @@
 import React from 'react'
 import TextRenderer from './renderBoxs/TextType'
+import PrismLoader from '../editor/boxes/components/PrismContinuousRenderer'
+import CodeType from './renderBoxs/CodeType'
 
 function Renderer({data=[]}) {
   return (
@@ -11,11 +13,21 @@ function Renderer({data=[]}) {
       <div>
         {
           data.map(o=>{
+            console.log("hi")
             if(o.type=="text"){
               return <TextRenderer data={JSON.parse(o.props.content)} key={Date.now()}/>
             }
+            switch(o.type){
+              case "text":
+                return <TextRenderer data={JSON.parse(o.props.content)} key={o.id+Date.now()}/>
+              case "code":
+                return <CodeType code={o.code} language={o.language} key={o.id+Date.now()}/>
+              default:
+                return <></>
+            }
           })
         }
+        <PrismLoader enable={true} checker={data}/>
       </div>
     </div>
   )
