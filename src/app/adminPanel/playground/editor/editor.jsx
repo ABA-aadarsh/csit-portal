@@ -24,7 +24,7 @@ function Editor({datajson,setDatajson}) {
   const [prismCheckerEnable,setPrismCheckerEnable]=useState(false)
   const [idsList,setIdsList]=useState([]) // store the ids of the objects and run the iteration on that basis so that unnecessary rendering of other componenet is not done when one componenet is being changed
   const {
-    createComponent,deleteItem,moveComponent,updateCode,updateEqn,updateImage,updateText,updateTitle,updateVideo,updateRecommendedLinkss
+    createComponent,deleteItem,moveComponent,updateCode,updateEqn,updateImage,updateText,updateTitle,updateVideo,updateRecommendedLinks
   }=componentHandler({idsList,datajson,setDatajson,setIdsList})
 
   return (
@@ -47,7 +47,7 @@ function Editor({datajson,setDatajson}) {
           <Button variant={"outline"} onClick={()=>{createComponent("code")}}>Code</Button>
         </ul>
       </div>
-      <div className='flex gap-3 min-h-[500px] relative py-2'>
+      <div className='flex gap-3 min-h-[500px] relative py-2 mb-10'>
         <div className='p-2 w-[300px] h-full sticky top-2 flex-shrink-0'>
           <h2 className='font-medium tracking-wide text-slate-600 mb-3'>Components</h2>
           <ul className='flex flex-col gap-2'>
@@ -105,8 +105,7 @@ function Editor({datajson,setDatajson}) {
                     moveComponent={moveComponent}
                   />
                 case "recommendedLinks":
-                  console.log("recommendation link should be up here")
-                  return <RecommendedLinksBox key={id} id={id} update={updateRecommendedLinkss} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
+                  return <RecommendedLinksBox key={id} id={id} update={updateRecommendedLinks} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
                   moveComponent={moveComponent}
                 />
                 default:

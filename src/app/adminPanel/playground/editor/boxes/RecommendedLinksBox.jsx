@@ -30,6 +30,10 @@ function RecommendedLinksBox(
         }
         setList([...list])
     }
+    useEffect(()=>{
+        console.log("hi")
+        update({id,list})
+    },[list])
     return (
         <div className='border-2 shadow-border rounded-lg overflow-hidden'
             id={id}
@@ -106,7 +110,7 @@ function RecommendedLinksBox(
                                             </Button>
                                         </div>
                                         <a href={i.link}
-                                            className='text-blue-400 hover:underline block w-36'
+                                            className='text-blue-400 hover:underline block'
                                             target='blank'
                                         >
                                             {i.title}

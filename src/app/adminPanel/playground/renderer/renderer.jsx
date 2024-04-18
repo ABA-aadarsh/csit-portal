@@ -4,6 +4,8 @@ import PrismLoader from '../editor/boxes/components/PrismContinuousRenderer'
 import CodeType from './renderBoxs/CodeType'
 import EqnType from './renderBoxs/EqnType'
 import ImageType from './renderBoxs/ImageType'
+import RecommendedLinksType from './renderBoxs/RecommendedLinksType'
+import VideoType from './renderBoxs/VideoType'
 
 function Renderer({data=[]}) {
   return (
@@ -13,7 +15,7 @@ function Renderer({data=[]}) {
           <hr className='mb-4'/>
       </div>
       <div className='flex justify-end mr-14'>
-        <div className='max-w-[700px] pt-4 w-full'>
+        <div className='max-w-[700px] pt-4 mb-10 w-full'>
           {
             data.map((o,_)=>{
               switch(o.type){
@@ -25,6 +27,10 @@ function Renderer({data=[]}) {
                   return <EqnType latex={o.latex}  key={o.id+Date.now()+_}/>
                 case "image":
                   return <ImageType props={o.props}  key={o.id+Date.now()+_}/>
+                case "recommendedLinks":
+                  return <RecommendedLinksType list={o.list} title={o.title}  key={o.id+Date.now()+_}/>
+                case "video":
+                  return <VideoType list={o.list} key={o.id+Date.now()+_}/>
                 default:
                   return <></>
               }

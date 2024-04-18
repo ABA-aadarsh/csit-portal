@@ -90,6 +90,7 @@ export const componentHandler=({idsList,setIdsList,datajson,setDatajson})=>{
         })
     }
     const updateRecommendedLinks=({id,list})=>{
+        console.log("list of links was updated")
         setDatajson(prev=>{
           const o = prev.findIndex(_=>_.id==id)
           prev[o].list=list

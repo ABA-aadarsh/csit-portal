@@ -17,7 +17,7 @@ function VideoBox(
     const [src,setSrc]=useState("")
     const [list, setList] = useState([])
     useEffect(()=>{
-        console.log(list)
+        update({id,list})
     },[list])
     const moveItem=({item,up})=>{
         const o = list.findIndex(_=>_.id==item.id)
@@ -51,6 +51,7 @@ function VideoBox(
                 <div>
                     <form onSubmit={(e)=>{
                         e.preventDefault()
+                        if(src=="") return;
                         setList(prev=>[...prev,{id:Date.now(),videoId:src}])
                         setSrc("")
                     }}
