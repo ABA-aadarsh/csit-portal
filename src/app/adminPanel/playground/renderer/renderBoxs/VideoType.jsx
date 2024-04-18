@@ -12,7 +12,8 @@ import Image from 'next/image';
 function VideoType({list=[]}) {
     const [selectedVideo,setSelectedVideo]=useState(list[0] || null)
   return (
-    <div>
+    <div className='my-10'>
+        <h1 className='m-auto mb-4 text-xl font-medium max-w-[640px]'>Recommeded Video</h1>
         <div className='bg-zinc-600 m-auto mb-6 max-w-[640px] max-h-[360px]'>
             {
                 selectedVideo &&

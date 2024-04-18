@@ -1,6 +1,15 @@
 "use client";
+import { useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 export const componentHandler=({idsList,setIdsList,datajson,setDatajson})=>{
+    useEffect(()=>{
+      setDatajson(
+        (datajson)=>{
+          const newDatajson=idsList.map(_=>datajson.find(i=>i.id==_))
+          return [...newDatajson]
+        }
+      )
+    },[idsList])
     const createComponent=(type="text")=>{
         let obj
         switch(type){

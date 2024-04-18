@@ -7,6 +7,7 @@ import Editor from './editor/editor';
 function Playground() {
     const [activeTab,setActiveTab]=useState("editor")
     const [datajson,setDatajson]=useState([])
+    
     const [previewData,setPreviewData]=useState([])
   return (
     <div>
