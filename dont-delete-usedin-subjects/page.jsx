@@ -2,10 +2,10 @@
 import { buttonVariants } from '@/components/ui/button'
 import Navbar from '@/myComponents/Navbar/Navbar'
 import React, { useEffect } from 'react'
-import Overview from './Overview';
-import Reports from './Reports';
+import Overview from './_components/Overview';
+import Reports from './_components/Reports';
 import Link from 'next/link';
-import Sidebar from './Sidebar';
+import Sidebar from './_components/Sidebar';
 import {useParams} from 'next/navigation'
 import { useSubjectDetails } from '@/hooks/useSubjectDetails';
 function page() {

@@ -24,7 +24,7 @@
         {
             "subjectCode":"CSC-116",
             "name":"Digital Logic",
-            "subjectId":"digital-program",
+            "subjectId":"digital-logic",
             "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "semester":1,
             "elective":false,
