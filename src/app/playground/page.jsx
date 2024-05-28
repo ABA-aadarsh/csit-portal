@@ -1,5 +1,5 @@
 import React from 'react'
-import Playground from './playground/playground';
+import Playground from './tools/playground';
 export const metadata= {
   title: 'Playground',
 };

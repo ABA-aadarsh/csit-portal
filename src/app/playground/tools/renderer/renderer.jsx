@@ -15,7 +15,7 @@ function Renderer({data=[]}) {
           <hr className='mb-4'/>
       </div>
       <div className='flex justify-end mr-14'>
-        <div className='max-w-[700px] pt-4 mb-10 w-full'>
+        <div className='max-w-[700px] pt-4 mb-10 w-full border-l-2 border-slate-400 pl-2'>
           {
             data.map((o,_)=>{
               switch(o.type){
