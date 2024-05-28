@@ -1,4 +1,5 @@
 "use client"
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 function Lessons({subjectId}) {
@@ -23,7 +24,11 @@ function Lessons({subjectId}) {
         <ul className='flex flex-col gap-3 ml-4'>
             {
                 list.map((i,_)=>(
-                    <li key={_}>{i.name}</li>
+                    <li key={_}>
+                        <Link href={`/admin/subject/${subjectId}/${i.name.toLowerCase().trim().replace(/\s+/g, '-')}`}>
+                            {i.name}
+                        </Link>
+                    </li>
                 ))
             }
         </ul>
