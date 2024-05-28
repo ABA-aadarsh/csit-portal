@@ -65,7 +65,7 @@ function Editor({datajson,setDatajson}) {
             }
           </ul>
         </div>
-        <div className='flex flex-col gap-4 flex-grow '>
+        <div className='flex flex-col gap-4 flex-grow max-w-[740px] '>
           {/* {
             datajson.map((i,_)=>{
               switch(i.type){
@@ -86,7 +86,7 @@ function Editor({datajson,setDatajson}) {
               const object=datajson.find(x=>x.id==id)
               switch(object.type){
                 case "text":
-                  return <TextBox id={id} key={id} update={updateText} deleteItem={deleteItem} title={object.title} updateTitle={updateTitle}
+                  return <TextBox id={id} key={id} update={updateText} deleteItem={deleteItem} title={object.title} updateTitle={updateTitle} initialData = {object.props.content}
                     moveComponent={moveComponent}
                   />
                 case "eqn":
@@ -106,7 +106,7 @@ function Editor({datajson,setDatajson}) {
                     moveComponent={moveComponent}
                   />
                 case "recommendedLinks":
-                  return <RecommendedLinksBox key={id} id={id} update={updateRecommendedLinks} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
+                  return <RecommendedLinksBox key={id} id={id} update={updateRecommendedLinks} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title} initialData={object.list}
                   moveComponent={moveComponent}
                 />
                 default:

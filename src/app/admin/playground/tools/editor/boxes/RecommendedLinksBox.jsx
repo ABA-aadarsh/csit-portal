@@ -11,12 +11,13 @@ function RecommendedLinksBox(
         deleteItem = (id) => { },
         title,
         updateTitle = ({ id, title }) => { },
-        moveComponent
+        moveComponent,
+        initialData=[]
     }
 ) {
     const [link,setLink]=useState("")
     const [linkTitle,setLinkTitle]=useState("")
-    const [list, setList] = useState([])
+    const [list, setList] = useState(initialData)
     const moveItem=({item,up})=>{
         const o = list.findIndex(_=>_.id==item.id)
         if((o==0 && up==true) || (o==(list.length-1) && up==false)){

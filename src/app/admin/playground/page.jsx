@@ -20,6 +20,18 @@ function page({searchParams}) {
               "props": {
                 "content": "[{\"type\":\"heading-one\",\"children\":[{\"text\":\"Introduction\"}]},{\"type\":\"paragraph\",\"children\":[{\"text\":\"The goal of this subject IIT is to build a common ground for all students taking this course. Some of your friends (or probably you as well) might not have taken computer as a subject before so this basic introductory subject is to help those students and also to refresh some of your old concepts with maybe new perspective.\"}]}]"
               }
+            },
+            {
+              "id": "5eff039b-49c4-4b47-bb16-34548a0eea32",
+              "type": "recommendedLinks",
+              "title": "links topic",
+              "list": [
+                {
+                  "id": 1716912014564,
+                  "title": "Meow Meow",
+                  "link": "https://meowmeowrevolution.com/"
+                }
+              ]
             }
           ]
         )

@@ -34,7 +34,7 @@ function Playground({datajson,setDatajson}) {
                 </Button>
             </div>
         </div>
-        <div>
+        <div className=''>
             <div className={`${activeTab=="preview"?"block":"hidden"}`}>
                 <Renderer data={previewData}/>
             </div>

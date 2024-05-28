@@ -52,7 +52,8 @@ const TextBox = ({
   deleteItem=(id)=>{},
   updateTitle=({id,title})=>{},
   title="",
-  moveComponent=({id,up})=>{}
+  moveComponent=({id,up})=>{},
+  initialData=""
 }) => {
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
@@ -72,7 +73,7 @@ const TextBox = ({
           <h1 className='text-xl'>Text Box</h1>
           <p className='text-zinc-400 text-sm'>{id}</p>
         </div>
-        <Slate editor={editor} initialValue={initialValue}
+        <Slate editor={editor} initialValue={initialData==""?defaultValue:JSON.parse(initialData)}
           onChange={value => {
             const isAstChange = editor.operations.some(
               op => 'set_selection' !== op.type
@@ -310,7 +311,7 @@ const MarkButton = ({ format, icon }) => {
   )
 }
 
-const initialValue= [
+const defaultValue= [
   {
     type: 'paragraph',
     children: [
