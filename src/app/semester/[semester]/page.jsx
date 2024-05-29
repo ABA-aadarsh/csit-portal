@@ -1,5 +1,5 @@
 import { Button, buttonVariants } from '@/components/ui/button';
-import Navbar from '@/myComponents/Navbar/Navbar'
+import Navbar from '@/shared/Navbar/Navbar'
 import Link from 'next/link';
 import React from 'react'
 import { getSemesterSubjects } from './getSemestersSubjects';

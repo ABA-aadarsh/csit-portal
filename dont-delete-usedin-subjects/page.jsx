@@ -1,6 +1,6 @@
 "use client";
 import { buttonVariants } from '@/components/ui/button'
-import Navbar from '@/myComponents/Navbar/Navbar'
+import Navbar from '@/shared/Navbar/Navbar'
 import React, { useEffect } from 'react'
 import Overview from './_components/Overview';
 import Reports from './_components/Reports';

@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import React from 'react'
+import Modules from './_components/Modules'
 
-function page({params}) {
+function page({params}){
   return (
     <div>
         <div className='flex gap-2 mb-4'>
@@ -11,6 +11,8 @@ function page({params}) {
           >Create New Module</Link>
         </div>
         <div>
+
+          <Modules lesson={params.lessonId} sub={params.subjectId}/>
           
         </div>
     </div>

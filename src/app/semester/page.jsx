@@ -1,4 +1,4 @@
-import Navbar from '@/myComponents/Navbar/Navbar'
+import Navbar from '@/shared/Navbar/Navbar'
 import React from 'react'
 
 function page() {
