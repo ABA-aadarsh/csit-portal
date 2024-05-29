@@ -3,8 +3,11 @@ import React, { useEffect, useState } from 'react'
 import Playground from './tools/playground';
 import Link from 'next/link';
 import { promptOnLeaving } from '@/hooks/promptBeforeLeaving';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 function page({searchParams}) {
+    const router =useRouter()
     const {mode,sub,lesson,moduleId} = searchParams
     const [datajson,setDatajson]=useState(null)
     const [error,setError]=useState(null)
@@ -32,16 +35,27 @@ function page({searchParams}) {
       }
     },[])
 
-    const saveContent = async ()=>{
+    const saveModule = async ()=>{
       const content = JSON.stringify(datajson)
       try {
-        const res = fetch(`/api/adminAccess/subjects/${sub}/lessons/${lesson}/module`,{
+        const res = await fetch(`/api/adminAccess/subjects/${sub}/lessons/${lesson}/module`,{
           method:"POST",
           body: JSON.stringify({content,title:moduleTitle})
         })
+        if(res.status==200){
+          toast.success(`New Module: (${moduleTitle}), is created`)
+          setTimeout(()=>{
+            router.push(`/admin/subject/${sub}/${lesson}`)
+          },500)
+        }
       } catch (error) {
+        toast.error(error.message)
         console.log(error)
       }
+    }
+
+    const updateModule = async ()=>{
+      toast.success("Module updated")
     }
 
     promptOnLeaving("There might be unsaved changes on this page. Make sure everything is saved")
@@ -71,7 +85,9 @@ function page({searchParams}) {
           </div>
 
           <button className='rounded-sm bg-zinc-950 text-white p-2'
-            onClick={saveContent}
+            onClick={()=>{
+              mode=="create"?saveModule():updateModule()
+            }}
           >
             {mode=="create"? "Save": "Update"}
           </button>

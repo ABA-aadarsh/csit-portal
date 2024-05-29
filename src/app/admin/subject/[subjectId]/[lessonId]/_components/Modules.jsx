@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 function Modules({sub,lesson}) {
   const [list,setList] = useState(null)
+  const [loading,setLoading]=useState(true)
   useEffect(()=>{
     const getModules = async ()=>{
       try {
@@ -19,6 +20,7 @@ function Modules({sub,lesson}) {
         console.log(error)
         setList(null)
       }
+      setLoading(false)
     }
 
 
@@ -34,6 +36,9 @@ function Modules({sub,lesson}) {
               <Link href={`/admin/playground?sub=${sub}&lesson=${lesson}&mode=edit&moduleId=${i._id}`}>{i.title}</Link>
             </li>
           ))
+        }
+        {
+          loading && <p>Wait content is being fetched</p>
         }
       </ul>
     </div>
