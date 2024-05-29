@@ -7,7 +7,9 @@ function Modules({sub,lesson}) {
   useEffect(()=>{
     const getModules = async ()=>{
       try {
-        const res = await fetch(`/api/adminAccess/subjects/${sub}/lessons/${lesson}/module`)
+        const res = await fetch(`/api/adminAccess/subjects/${sub}/lessons/${lesson}/module`,{
+          cache:"force-cache"
+        })
         if(res.status==200){
           const {payload}= await res.json()
           console.log(payload)

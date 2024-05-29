@@ -1,34 +1,27 @@
-// lib/mongodb.js
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const connection = {connected:false}
 
-if (!MONGODB_URI) {
-  throw new Error(
-    'Please define the MONGODB_URI environment variable inside .env.local'
-  );
-}
-let cached = global.mongoose;
+const connectToDatabase = async ()=>{
 
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
-  console.log("yes")
-}
-
-async function connectToDatabase() {
-  if (cached.conn) {
-    return cached.conn;
+  if(connection.connected!=false){
+    return
   }
 
-  if (!cached.promise) {
-    const opts = {};
-
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((conn) => {
-      return conn;
-    });
+  try{
+    if(!process.env.MONGODB_URI){
+      throw new Error("MONGODB_URI is not passed")
+    }
+    const db = await mongoose.connect(process.env.MONGODB_URI,{autoIndex:false})
+    if(db.connections[0].readyState!=0){
+      connection.connected=true
+    }
+  }catch(error){
+    console.log(error)
+    process.exit()
   }
-  cached.conn = await cached.promise;
-  return cached.conn;
 }
 
-export default connectToDatabase;
+
+
+export default connectToDatabase

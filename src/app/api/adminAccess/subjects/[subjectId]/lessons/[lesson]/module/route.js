@@ -30,7 +30,6 @@ export const POST = async (req,{params})=>{
 
 
 export const GET = async (req,{params})=>{
-    console.log("what")
     await connectToDatabase()
     const {subjectId,lesson}=params
     try {

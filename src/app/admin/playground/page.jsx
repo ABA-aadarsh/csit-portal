@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useState } from 'react'
 import Playground from './tools/playground';
+import Link from 'next/link';
+import { promptOnLeaving } from '@/hooks/promptBeforeLeaving';
 
 function page({searchParams}) {
     const {mode,sub,lesson,moduleId} = searchParams
@@ -15,7 +17,7 @@ function page({searchParams}) {
         // following is example
         const getData = async (moduleId)=>{
           try {
-            const res = await fetch(`/api/adminAccess/subjects/${sub}/lessons/${lesson}/module/${moduleId}`)
+            const res = await fetch(`/api/adminAccess/subjects/${sub}/lessons/${lesson}/module/${moduleId}`,{cache:"no-cache"})
             const {content,title} = await res.json()
             setDatajson(JSON.parse(content))
             setModuleTitle(title)
@@ -42,20 +44,37 @@ function page({searchParams}) {
       }
     }
 
+    promptOnLeaving("There might be unsaved changes on this page. Make sure everything is saved")
+
     return (
       <div>
-        <h1>Queries: subject = {sub} , lesson = {lesson}, mode = {mode}, moduleId = {moduleId || "Not available"}</h1>
-        <div>
-          <input type="text" defaultValue={moduleId || "New Module"} disabled />
-          <input type="text" value={moduleTitle} onChange={(e)=>setModuleTitle(e.currentTarget.value)} />
-          <input type="text" value={sub} onChange={()=>{}} />
-          <input type="text" value={lesson} onChange={()=>{}} />
-          {/* TODO: Implement the onchange events for the input fields above */}
+        <div className='bg-blue-700 text-white p-2 '>
+          <Link href={"/admin"}>Admin.Home</Link>
+        </div>
+        <div className='flex gap-3 items-end'>
+          <input type="text" defaultValue={moduleId || "New Module"} disabled 
+            className="rounded-md text-white p-2 bg-slate-800"
+          />
+          
+          <div className='flex flex-col gap-1'>
+            <span>Subject</span>
+            <input type="text" value={sub} onChange={()=>{}} className='bg-slate-800 p-2 rounded-md text-white' disabled/>
+          </div>
+          <div className='flex flex-col gap-1'>
+            <span>Lesson</span>
+            <input type="text" value={sub} onChange={()=>{}} className='bg-slate-800 p-2 rounded-md text-white' disabled/>
+          </div>
 
+          <div className='flex flex-col gap-1'>
+            <span>Title</span>
+            <input type="text" value={moduleTitle} onChange={(e)=>setModuleTitle(e.currentTarget.value)} className='border-2 border-rose-400 p-2 text-blue-600'/>
+          </div>
 
           <button className='rounded-sm bg-zinc-950 text-white p-2'
             onClick={saveContent}
-          >Save</button>
+          >
+            {mode=="create"? "Save": "Update"}
+          </button>
         </div>
 
         <div className='w-full h-dvh p-4'>
