@@ -1,4 +1,4 @@
-import Navbar from "@/shared/Navbar/Navbar";
+import Navbar from "@/components/shared/Navbar";
 import Sidebar from "./_components/Sidebar";
 
 export const metadata = {
