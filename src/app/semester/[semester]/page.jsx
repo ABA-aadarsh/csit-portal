@@ -35,7 +35,7 @@ async function page({params}) {
                                             <span className="text-sm">{i.subjectCode}</span>
                                         </div>
                                         <p>{i.desc}</p>
-                                        <Link href={"/subject/"+i.subjectId+"/overview"} className={buttonVariants({variant:"secondary"})}>Learn</Link>
+                                        <Link href={"/subject/"+i.name.toLowerCase().trim().replace(/ /g, "-")+"/overview"} className={buttonVariants({variant:"secondary"})}>Learn</Link>
                                     </div>
                                 ))
                             }

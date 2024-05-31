@@ -11,7 +11,7 @@ export default function RootLayout({ children}) {
     <div>
         <div className='h-dvh flex flex-col w-dvw'>
             <Navbar/>
-            <div className='flex flex-grow'>
+            <div className='grid grid-cols-[230px_auto] flex-grow'>
                 <Sidebar />
                 {children}
             </div>

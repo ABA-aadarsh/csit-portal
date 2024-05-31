@@ -4,7 +4,6 @@ export const getSemesterSubjects= async ({semester})=>{
     try{
         const allSubjects=subjectData.subjects
         const requiredSubjects=allSubjects.filter(i=>i.semester==semester).map(i=>({
-            subjectId:i.subjectId,
             subjectCode:i.subjectCode,
             name:i.name,
             desc:i.desc

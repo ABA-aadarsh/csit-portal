@@ -21,3 +21,25 @@ export const GET = async (req, {params})=>{
         )
     }
 }
+
+
+export const PATCH = async (req,{params})=>{
+    try{
+        await connectToDatabase()
+        const {moduleId} = params
+        const {content,title}=await ModuleModel.findByIdAndUpdate(moduleId)
+        return NextResponse.json(
+            {
+                message:"Updation Complete"
+            },{status:200}
+        )
+
+    }catch(error){
+        console.log(error)
+        return NextResponse.json(
+            {
+                message:"Error while updating module, error message: "+error.message
+            },{status:405}
+        )
+    }
+}

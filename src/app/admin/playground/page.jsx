@@ -36,8 +36,8 @@ function page({searchParams}) {
     },[])
 
     const saveModule = async ()=>{
-      const content = JSON.stringify(datajson)
       try {
+        const content = JSON.stringify(datajson)
         const res = await fetch(`/api/adminAccess/subjects/${sub}/lessons/${lesson}/module`,{
           method:"POST",
           body: JSON.stringify({content,title:moduleTitle})
@@ -55,7 +55,23 @@ function page({searchParams}) {
     }
 
     const updateModule = async ()=>{
-      toast.success("Module updated")
+      try {
+        if(moduleId==null){
+          throw new Error("ModuleId not found")
+        }
+        const content = JSON.stringify()
+        const res = await fetch(`/api/adminAccess/subjects/${sub}/lessons/${lesson}/module/${moduleId}`,{
+          method:"PATCH",
+          body: JSON.stringify({content, title: moduleTitle})
+        })
+        if(res.status==200){
+          toast.success("Module Updated Successfully")
+        }
+      } catch (error) {
+        console.log(error)
+        toast.error("Failed to update module")
+        toast.error(error.message)
+      }
     }
 
     promptOnLeaving("There might be unsaved changes on this page. Make sure everything is saved")

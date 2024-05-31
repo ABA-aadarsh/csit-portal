@@ -9,7 +9,7 @@ import { FaQuestion } from "react-icons/fa6";
 import { usePathname } from 'next/navigation';
 import { path } from 'slate';
 
-function Sidebar({params, subjectName="Loading..."}) {
+function Sidebar() {
     const paths=usePathname().split("/")
     const tab = paths.pop()
     const subjectId =paths.pop()
@@ -21,8 +21,8 @@ function Sidebar({params, subjectName="Loading..."}) {
         {name:"Questions Bank",link:`questions-bank`,icon:<FaQuestion className='text-[22px]'/>}
     ]
     return (
-        <div className=' h-full shadow-border border-2 border-t-0 w-[230px] p-2 overflow-auto'>
-            {/* <h1 className='text-sm min-h-[40px] flex items-center mb-2'>{subjectName.toUpperCase()}</h1> */}
+        <div className=' h-full shadow-border border-2 border-t-0 p-2 overflow-auto'>
+            <h1 className='text-sm min-h-[40px] flex items-center mb-2 uppercase'>{subjectId.replace(/-/g," ")}</h1>
             <div>
                 <ul className='flex flex-col gap-2'>
                     {

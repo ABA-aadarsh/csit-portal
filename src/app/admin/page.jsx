@@ -35,7 +35,7 @@ const SemesterAndSubjects=async ()=>{
                                 {
                                     subs.map(i=>(
                                         <li key={i.name} className='list-none text-[20px] text-blue-800'>
-                                            <Link href={`/admin/subject/${i.id}`}>{i.name}</Link>
+                                            <Link href={`/admin/subject/${i.name.toLowercase().trim().replace(/ /g, "-")}`}>{i.name}</Link>
                                         </li>
                                     ))
                                 }

@@ -2,11 +2,12 @@
     "subjects":[
         {
             "subjectCode":"CSC-114",
-            "name":"Introduction to Information Technology",
+            "name":"Introduction To Information Technology",
             "subjectId":"iit",
-            "desc":"Learn about the basics of computer, different components of computer architecture and softwares.",
+            "desc":"The objective of this course is to establish a common foundation for all students, regardless of their prior experience with computer science. It covers fundamental topics such as basic computer usage, an overview of its simplified working mechanisms, and practical tools including MS Word and MS Excel.",
             "semester":1,
             "elective":false,
+            "marksScheme":{"full":"60/20/20","pass":"24/8/8"},
             "lessons":[
                 {"name":"Introduction to Computers"},
                 {"name":"The Computer System Hardware"},
@@ -25,98 +26,163 @@
             "subjectCode":"CSC-116",
             "name":"Digital Logic",
             "subjectId":"digital-logic",
-            "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "desc":"This course covers the concepts of digital logic and switching networks. The course includes the fundamental concepts of Boolean algebra and its application for circuit analysis, multilevel gates networks, flip-lops, counters logic devices and synchronous and asynchronous sequential logic and digital integrated circuits.",
             "semester":1,
             "elective":false,
+            "marksScheme":{"full":"60/20/20","pass":"24/8/8"},
             "lessons":[
-                {"name":"Introduction to Computers"},
-                {"name":"The Computer System Hardware"},
-                {"name":"Computer Memory"},
-                {"name":"Input and Output Devices"},
-                {"name":"Data Representations"},
-                {"name":"Computer Software"},
-                {"name":"The Internet and internet services"},
-                {"name":"Fundamentals of Database"},
-                {"name":"Multimedia"},
-                {"name":"Computer Security"},
-                {"name":"The Computer System Hardware"}
+                {"name":"Binary Systems"},
+                {"name":"Boolean Algebra and logic gates"},
+                {"name":"Simplification of Boolean Functions"},
+                {"name":"Combinational Logic"},
+                {"name":"Combinational Logic with MSI and LSI"},
+                {"name":"Synchronous and Asynchronous Sequential Logic"},
+                {"name":"Registers and Counters"}
             ]
         },
         {
-            "subjectCode":"PHY-117",
+            "subjectCode":"PHY-118",
             "name":"Physics",
             "subjectId":"physics",
-            "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "desc":"This course covers the fundamentals of physics including oscillations,electromagnetic theory, and basics of quantum mechanics, band theory, semiconductors and universal logic gates and finally physics of manufacturing integrated circuits.",
             "semester":1,
             "elective":false,
             "lessons":[
-                {"name":"Introduction to Computers"},
-                {"name":"The Computer System Hardware"},
-                {"name":"Computer Memory"},
-                {"name":"Input and Output Devices"},
-                {"name":"Data Representations"},
-                {"name":"Computer Software"},
-                {"name":"The Internet and internet services"},
-                {"name":"Fundamentals of Database"},
-                {"name":"Multimedia"},
-                {"name":"Computer Security"},
-                {"name":"The Computer System Hardware"}
+                {"name":"Rotational Dynamics and Oscillatory Motion"},
+                {"name":"Electric and Magnetic Field"},
+                {"name":"Fundamentals of Atomic Theory"},
+                {"name":"Methods of Quantum Mechanics"},
+                {"name":"Fundamentals of Solid State Physics"},
+                {"name":"Semiconductor and Semiconductor devices"},
+                {"name":"Universal Gates and Physics of Integrated Circuits"}
             ]
         },
         {
-            "subjectCode":"MTH-118",
+            "subjectCode":"MTH-117",
             "name":"Mathematics",
             "subjectId":"math-1",
-            "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "desc":"This course objective is to develop analytical and problem-solving skills, provide a foundational understanding for advanced computer science topics, and enhance computational abilities essential for IT applications.",
             "semester":1,
             "elective":false,
             "lessons":[
-                {"name":"Introduction to Computers"},
-                {"name":"The Computer System Hardware"},
-                {"name":"Computer Memory"},
-                {"name":"Input and Output Devices"},
-                {"name":"Data Representations"},
-                {"name":"Computer Software"},
-                {"name":"The Internet and internet services"},
-                {"name":"Fundamentals of Database"},
-                {"name":"Multimedia"},
-                {"name":"Computer Security"},
-                {"name":"The Computer System Hardware"}
+                {"name":"Function of One Variable"},
+                {"name":"Limits and Continuity"},
+                {"name":"Derivatives"},
+                {"name":"Applications of Derivatives"},
+                {"name":"Antiderivatives"},
+                {"name":"Applications of Antiderivatives"},
+                {"name":"Ordinary Differential Equations"},
+                {"name":"Infinite Sequence and Series"},
+                {"name":"Plane and Space Vectors"},
+                {"name":"Partial Derivatives and Multiple Integrals"}
             ]
         },
         {
             "subjectCode":"CSC-115",
             "name":"C Programming",
             "subjectId":"c-programming",
-            "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "desc":"This course covers the concepts of structured programming using C programming language.",
             "semester":1,
             "elective":false,
             "lessons":[
-                {"name":"Introduction to Computers"},
-                {"name":"The Computer System Hardware"},
-                {"name":"Computer Memory"},
-                {"name":"Input and Output Devices"}
+                {"name":"Problem Solving with Computer"},
+                {"name":"Elements of C"},
+                {"name":"Input and Output"},
+                {"name":"Operators and Expression"},
+                {"name":"Control Statement"},
+                {"name":"Arrays"},
+                {"name":"Functions"},
+                {"name":"Structure and Union"},
+                {"name":"Pointers"},
+                {"name":"File Handling in C"},
+                {"name":"Introduction to Graphics"}
             ]
         },
         {
-            "subjectCode":"CSC-119",
-            "name":"DSA",
-            "subjectId":"dsa",
-            "desc":"orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "subjectCode":"CSC-165",
+            "name":"Discrete Structures",
+            "subjectId":"discrete-structures",
+            "desc":"The course covers fundamental concepts of discrete structure like introduce logic, proofs, sets, relations, functions, counting, and probability, with an emphasis on applications in computer science.",
             "semester":2,
             "elective":false,
             "lessons":[
-                {"name":"Introduction to Computers"},
-                {"name":"The Computer System Hardware"},
-                {"name":"Computer Memory"},
-                {"name":"Input and Output Devices"},
-                {"name":"Data Representations"},
-                {"name":"Computer Software"},
-                {"name":"The Internet and internet services"},
-                {"name":"Fundamentals of Database"},
-                {"name":"Multimedia"},
-                {"name":"Computer Security"},
-                {"name":"The Computer System Hardware"}
+                {"name":"Basic Discrete Structures"},
+                {"name":"Integers and Matrices"},
+                {"name":"Logic and Proof Methods"},
+                {"name":"Induction and Recursion"},
+                {"name":"Counting and Discrete Probability "},
+                {"name":"Relations and Graphs"}
+            ]
+        },
+        {
+            "subjectCode":"CSC-166",
+            "name":"Object Oriented Programming",
+            "subjectId":"oop",
+            "desc":"The main objective of this course is to understand object oriented programming and advanced C++ concepts such as composition of objects, operator overloads, inheritance and polymorphism, file I/O, exception handling and templates.",
+            "semester":2,
+            "elective":false,
+            "lessons":[
+                {"name":"Introduction to Object Oriented Programming"},
+                {"name":"Basics of C++ programming"},
+                {"name":"Classes & Objects"},
+                {"name":"Operator Overloading"},
+                {"name":"Inheritance"},
+                {"name":"Virtual Function, Polymorphism, and miscellaneous C++ Features"},
+                {"name":" Function Templates and Exception Handling"},
+                {"name":"File Handling"}
+            ]
+        },
+        {
+            "subjectCode":"CSC-167",
+            "name":"Microprocessor",
+            "subjectId":"microprocessor",
+            "desc":"This course contains of fundamental concepts of computer organization, basic I/O interfaces and Interrupts operations.",
+            "semester":2,
+            "elective":false,
+            "lessons":[
+                {"name":"Introduction to Microprocessor"},
+                {"name":"Basic Architecture"},
+                {"name":"Instruction Cycle"},
+                {"name":"Assembly Language Programming"},
+                {"name":"Basic I/O, Memory R/W and Interrupt Operations"},
+                {"name":"Input/ Output Interfaces"},
+                {"name":"Advanced Microprocessors"}
+            ]
+        },
+        {
+            "subjectCode":"MTH-168",
+            "name":"Mathematics 2",
+            "subjectId":"math-2",
+            "desc":"The course contains concepts and techniques of linear algebra. The course topics include systems of linear equations, determinants, vectors and vector spaces, eigen values and eigenvectors, and singular value decomposition of a matrix.",
+            "semester":2,
+            "elective":false,
+            "lessons":[
+                {"name":"Linear Equations in Linear Algebra"},
+                {"name":"Transformation"},
+                {"name":"Matrix Algebra"},
+                {"name":"Determinants"},
+                {"name":"Vector Spaces"},
+                {"name":"Eigenvalues and Eigen Vectors"},
+                {"name":"Orthogonality and Least Squares"},
+                {"name":"Groups and Subgroups"},
+                {"name":"Rings and Fields"}
+            ]
+        },
+        {
+            "subjectCode":"STA-169",
+            "name":"Statistics 1",
+            "subjectId":"statistics-1",
+            "desc":"This course contains basics of statistics, descriptive statistics, probability, sampling, random variables and mathematical expectations, probability distribution, correlation and regression.",
+            "semester":2,
+            "elective":false,
+            "lessons":[
+                {"name":"Introduction"},
+                {"name":"Descriptive Statistics"},
+                {"name":"Introduction to Probability"},
+                {"name":"Sampling"},
+                {"name":"Random Variables and Mathematical Expectation"},
+                {"name":"Probability Distributions"},
+                {"name":"Correlation and Linear Regression"}
             ]
         }
     ]
