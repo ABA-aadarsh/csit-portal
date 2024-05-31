@@ -9,7 +9,7 @@ function Modules({sub,lesson}) {
     const getModules = async ()=>{
       try {
         const res = await fetch(`/api/adminAccess/subjects/${sub}/lessons/${lesson}/module`,{
-          cache:"force-cache"
+          cache:"no-cache"
         })
         if(res.status==200){
           const {payload}= await res.json()
@@ -29,7 +29,7 @@ function Modules({sub,lesson}) {
   },[])
   return (
     <div>
-      <ul>
+      <ul className='ml-4 flex flex-col gap-3'>
         {
           list && list.map(i=>(
             <li key={i._id}>

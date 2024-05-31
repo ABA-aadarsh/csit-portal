@@ -1,4 +1,5 @@
 import connectToDatabase from "@/dbconfig"
+import { getSlug } from "@/lib/myUtils"
 import ModuleModel from "@/models/moduleModel"
 import { NextResponse } from "next/server"
 
@@ -27,7 +28,11 @@ export const PATCH = async (req,{params})=>{
     try{
         await connectToDatabase()
         const {moduleId} = params
-        const {content,title}=await ModuleModel.findByIdAndUpdate(moduleId)
+        const body= await req.json()
+        const {content, title} = body
+        await ModuleModel.findByIdAndUpdate(moduleId, {
+            content,title,slug:getSlug(title)
+        })
         return NextResponse.json(
             {
                 message:"Updation Complete"

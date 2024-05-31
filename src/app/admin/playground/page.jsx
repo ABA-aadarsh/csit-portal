@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { promptOnLeaving } from '@/hooks/promptBeforeLeaving';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
+import { revalidateTag } from 'next/cache';
 
 function page({searchParams}) {
     const router =useRouter()
@@ -36,6 +37,7 @@ function page({searchParams}) {
     },[])
 
     const saveModule = async ()=>{
+
       try {
         const content = JSON.stringify(datajson)
         const res = await fetch(`/api/adminAccess/subjects/${sub}/lessons/${lesson}/module`,{
@@ -59,7 +61,7 @@ function page({searchParams}) {
         if(moduleId==null){
           throw new Error("ModuleId not found")
         }
-        const content = JSON.stringify()
+        const content = JSON.stringify(datajson)
         const res = await fetch(`/api/adminAccess/subjects/${sub}/lessons/${lesson}/module/${moduleId}`,{
           method:"PATCH",
           body: JSON.stringify({content, title: moduleTitle})
@@ -92,7 +94,7 @@ function page({searchParams}) {
           </div>
           <div className='flex flex-col gap-1'>
             <span>Lesson</span>
-            <input type="text" value={sub} onChange={()=>{}} className='bg-slate-800 p-2 rounded-md text-white' disabled/>
+            <input type="text" value={lesson} onChange={()=>{}} className='bg-slate-800 p-2 rounded-md text-white' disabled/>
           </div>
 
           <div className='flex flex-col gap-1'>

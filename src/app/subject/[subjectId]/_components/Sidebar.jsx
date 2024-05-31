@@ -7,9 +7,8 @@ import { ImLab } from "react-icons/im";
 import { MdOutlineOndemandVideo } from "react-icons/md";
 import { FaQuestion } from "react-icons/fa6";
 import { usePathname } from 'next/navigation';
-import { path } from 'slate';
 
-function Sidebar() {
+function Sidebar({}) {
     const paths=usePathname().split("/")
     const tab = paths.pop()
     const subjectId =paths.pop()
@@ -22,7 +21,7 @@ function Sidebar() {
     ]
     return (
         <div className=' h-full shadow-border border-2 border-t-0 p-2 overflow-auto'>
-            <h1 className='text-sm min-h-[40px] flex items-center mb-2 uppercase'>{subjectId.replace(/-/g," ")}</h1>
+            <h1 className='text-sm min-h-[40px] flex items-center mb-2 capitalize'>{subjectId.replace(/-/g," ")}</h1>
             <div>
                 <ul className='flex flex-col gap-2'>
                     {

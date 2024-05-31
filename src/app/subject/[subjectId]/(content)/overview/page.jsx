@@ -38,7 +38,7 @@ async function page({params}) {
                     payload.lessons.map((i,_)=>(
                       <li key={_}>
                         <Link
-                          href={"#"}
+                          href={`/learn/${params.subjectId}/${i.name.toLowerCase().replace(/ /g,"-")}`}
                         >
                           {i.name}
                         </Link>

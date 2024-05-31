@@ -1,22 +1,22 @@
 import connectToDatabase from "@/dbconfig"
+import { getSlug } from "@/lib/myUtils"
 import ModuleModel from "@/models/moduleModel"
 import { NextResponse } from "next/server"
 
 
 export const POST = async (req,{params})=>{
-    console.log("hey")
     await connectToDatabase()
     // creating a new module
     const {subjectId, lesson} = params
     const {content,title} = await req.json()
-    console.log(subjectId,content,title,lesson)
     try {
         const newModule = new ModuleModel(
             {
                 sub: subjectId,
                 lesson: lesson,
                 content: content,
-                title: title
+                title: title,
+                slug: getSlug(title)
             }
         )
         await newModule.save()
