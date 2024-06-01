@@ -15,7 +15,11 @@ const ModuleSchema = new Schema(
             required: [true, "LessonId is required"]
         },
         content: String,
-        slug: String
+        slug: String,
+        viewAvailable: {
+            type: Boolean,
+            default: false
+        }
     }
 )
 

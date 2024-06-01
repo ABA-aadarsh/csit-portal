@@ -1,9 +1,14 @@
 import React from 'react'
 import Sidebar from '../_components/Sidebar'
-import { getLessons, getModuleData, getSidebarData } from '../data/data'
+import { getLessons, getModuleData, getSidebarData, getModuleParams } from '../data/data'
 import Renderer from '../_components/renderer/renderer'
 
+export const generateStaticParams = async ()=>{
+    const list = await getModuleParams()
+    return list
+}
 
+export const dynamic = false
 
 async function page({params}) {
     const moduleList = await getSidebarData({subjectId:params.subjectId})

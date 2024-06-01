@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const connection = {connected:false}
 
 const connectToDatabase = async ()=>{
-
   if(connection.connected!=false){
     return
   }
@@ -13,6 +12,7 @@ const connectToDatabase = async ()=>{
       throw new Error("MONGODB_URI is not passed")
     }
     const db = await mongoose.connect(process.env.MONGODB_URI,{autoIndex:false})
+    console.log("database connection successful")
     if(db.connections[0].readyState!=0){
       connection.connected=true
     }

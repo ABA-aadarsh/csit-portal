@@ -33,7 +33,7 @@ export const GET = async (req,{params})=>{
     await connectToDatabase()
     const {subjectId,lesson}=params
     try {
-        const data = await ModuleModel.find({sub:subjectId,lesson:lesson}).select("_id title")
+        const data = await ModuleModel.find({sub:subjectId,lesson:lesson}).select("_id title viewAvailable")
         return NextResponse.json(
             {
                 payload: data

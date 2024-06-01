@@ -30,9 +30,10 @@ const SemesterAndSubjects=async ()=>{
         "use server"
         try {
             revalidateTag("modules")
-            console.log("Revalidated modules")
+            return true
         } catch (error) {
             console.log(error)
+            return false
         }
     }
 
