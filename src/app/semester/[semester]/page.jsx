@@ -3,6 +3,7 @@ import Navbar from '@/components/shared/Navbar'
 import Link from 'next/link';
 import React from 'react'
 import { getSemesterSubjects } from './getSemestersSubjects';
+import Footer from '@/components/shared/Footer';
 
 export const dynamic = "force-static"
 
@@ -14,15 +15,28 @@ export const generateStaticParams=()=>{
 async function page({params}) {
     const semester=params.semester
     const {success,payload} = await getSemesterSubjects({semester})
+    const semesterNumberToText=(n)=>{
+        switch(n){
+            case "1": return "First"
+            case "2": return "Second"
+            case "3": return "Third"
+            case "4": return "Fourth"
+            case "5": return "Fifth"
+            case "6": return "Sixth"
+            case "7": return "Seventh"
+            case "8": return "Eight"
+            default: return "Not Valid";
+        }
+    }
     if(success){
         const subjects=payload
         return (
-        <div>
+        <main>
             <Navbar/>
             <div>
                 <div>
                     <div>
-                        <h1>Semester - {semester}</h1>
+                        <h1>{semesterNumberToText(params.semester)} Semester</h1>
                     </div>
                     <section>
                         <div className='flex gap-4 flex-wrap'>
@@ -44,7 +58,9 @@ async function page({params}) {
                     </section>
                 </div>
             </div>
-        </div>
+
+            <Footer/>
+        </main>
         )
     }else{
         return(
