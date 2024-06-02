@@ -3,7 +3,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer className='bg-[#2b324d] py-16 text-whitish'>
+    <footer className='bg-[#2b324d] py-16 text-whitish px-10'>
           <div className='max-w-[1200px] mx-auto grid grid-cols-[400px_200px_200px] gap-x-10 mb-10'>
 
             <div>

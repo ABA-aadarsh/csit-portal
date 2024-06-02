@@ -12,7 +12,7 @@ import Link from 'next/link';
 
 function Navbar() {
   return (
-    <header>
+    <header className='sticky top-0 bg-whitish z-10'>
         <nav
             className='py-2 border-2 shadow-border h-[48px]'
         >

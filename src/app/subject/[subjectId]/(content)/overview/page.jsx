@@ -1,7 +1,7 @@
 import React from 'react'
 import { getSubjectData, getSubjectIds } from './getOverviewData'
 import Link from 'next/link'
-import { Book, BookOpen } from 'lucide-react'
+import { Book, BookOpen, Notebook } from 'lucide-react'
 
 export const generateStaticParams=()=>{
     const list = getSubjectIds()
@@ -40,13 +40,13 @@ async function page({params}) {
                 <ul className='flex flex-col gap-4'>
                   {
                     payload.lessons.map((i,_)=>(
-                      <li key={_} className='flex gap-2 items-center  hover:text-blue-800 transition duration-500 text-headingColor w-fit'>
-                        <Book size={15}/>
+                      <li key={_} className=' hover:text-blue-800 transition duration-500 text-headingColor w-fit'>
                         <Link
                           href={`/learn/${params.subjectId}/${i.name.toLowerCase().replace(/ /g,"-")}`}
-                          className=' text-lg font-medium'
+                          className=' text-lg font-medium flex gap-2 items-center '
                         >
-                          {i.name}
+                          <Notebook className='cursor-pointer' size={15}/>
+                          <span>{i.name}</span>
                         </Link>
                       </li>
                     ))

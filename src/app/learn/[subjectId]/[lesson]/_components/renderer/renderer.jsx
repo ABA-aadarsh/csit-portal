@@ -9,9 +9,9 @@ import VideoType from './renderBoxs/VideoType'
 
 function Renderer({data=[]}) {
   return (
-    <div>
-      <div className='flex justify-end mr-14'>
-        <div className='pt-4 mb-10 w-full border-l-2 border-slate-400 pl-2'>
+    <div className='min-h-[200dvh]'>
+      <div className=''>
+        <div className='pt-4 mb-10 w-full pl-2'>
           {
             data.map((o,_)=>{
               switch(o.type){
