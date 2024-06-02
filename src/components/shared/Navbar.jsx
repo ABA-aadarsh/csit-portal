@@ -14,7 +14,7 @@ function Navbar() {
   return (
     <header>
         <nav
-            className='py-2 border-2 shadow-border'
+            className='py-2 border-2 shadow-border h-[48px]'
         >
             <div
                 className='flex items-center gap-10 max-w-[1200px] m-auto relative'
@@ -35,19 +35,19 @@ function Navbar() {
                             <i><GoTriangleDown/></i>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent className="flex flex-col gap-2 px-2 bg-white">
-                            <DropdownMenuItem><Link href="/semester/1">1st Semester</Link></DropdownMenuItem>
-                            <DropdownMenuItem><Link href="/semester/2">2st Semester</Link></DropdownMenuItem>
-                            <DropdownMenuItem><Link href="/semester/3">3rd Semester</Link></DropdownMenuItem>
-                            <DropdownMenuItem><Link href="/semester/4">4th Semester</Link></DropdownMenuItem>
-                            <DropdownMenuItem><Link href="/semester/5">5th Semester</Link></DropdownMenuItem>
-                            <DropdownMenuItem><Link href="/semester/6">6th Semester</Link></DropdownMenuItem>
-                            <DropdownMenuItem><Link href="/semester/7">7th Semester</Link></DropdownMenuItem>
-                            <DropdownMenuItem><Link href="/semester/8">8th Semester</Link></DropdownMenuItem>
+                            <DropdownMenuItem><Link href="/semester/1" className='inline-block w-full'>1st Semester</Link></DropdownMenuItem>
+                            <DropdownMenuItem><Link href="/semester/2" className='inline-block w-full'>2st Semester</Link></DropdownMenuItem>
+                            <DropdownMenuItem><Link href="/semester/3" className='inline-block w-full'>3rd Semester</Link></DropdownMenuItem>
+                            <DropdownMenuItem><Link href="/semester/4" className='inline-block w-full'>4th Semester</Link></DropdownMenuItem>
+                            <DropdownMenuItem><Link href="/semester/5" className='inline-block w-full'>5th Semester</Link></DropdownMenuItem>
+                            <DropdownMenuItem><Link href="/semester/6" className='inline-block w-full'>6th Semester</Link></DropdownMenuItem>
+                            <DropdownMenuItem><Link href="/semester/7" className='inline-block w-full'>7th Semester</Link></DropdownMenuItem>
+                            <DropdownMenuItem><Link href="/semester/8" className='inline-block w-full'>8th Semester</Link></DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
 
-                    <Link href={"/questionbank"} >Question Bank</Link>
-                    <Link href={"/about"} >About</Link>
+                    {/* <Link href={"/questionbank"} >Question Bank</Link>
+                    <Link href={"/about"} >About</Link> */}
                 </div>
                 <div className='absolute right-0'>
                     <Button className="py-[2px] text-white bg-rose-500 hover:bg-rose-200 hover:text-rose-700 h-[35px]">Feedback</Button>

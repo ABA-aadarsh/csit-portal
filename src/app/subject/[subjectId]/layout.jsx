@@ -8,14 +8,14 @@ export const metadata = {
 
 export default function RootLayout({ children}) {
   return (
-    <div>
-        <div className='h-dvh flex flex-col w-dvw'>
-            <Navbar/>
-            <div className='grid grid-cols-[230px_auto] flex-grow'>
-                <Sidebar />
-                {children}
+    <>
+        <Navbar/>
+        <div className='h-[calc(100dvh-48px)] grid grid-cols-[230px_auto] flex-grow'>
+            <Sidebar />
+            <div className="max-h-[full] overflow-auto">
+              {children}
             </div>
         </div>
-    </div>
+    </>
   );
 }

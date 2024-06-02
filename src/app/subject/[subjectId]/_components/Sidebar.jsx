@@ -1,6 +1,6 @@
 "use client";
 import Link from 'next/link';
-const listItemStyle="w-full cursor-pointer hover:bg-secondary/80 py-1 flex items-center gap-1"
+const listItemStyle="w-full cursor-pointer hover:bg-secondary/80 py-1 flex items-center gap-2"
 import React from 'react'
 import { BiBook } from "react-icons/bi";
 import { ImLab } from "react-icons/im";
@@ -20,21 +20,21 @@ function Sidebar({}) {
         {name:"Questions Bank",link:`questions-bank`,icon:<FaQuestion className='text-[22px]'/>}
     ]
     return (
-        <div className=' h-full shadow-border border-2 border-t-0 p-2 overflow-auto'>
-            <h1 className='text-sm min-h-[40px] flex items-center mb-2 capitalize'>{subjectId.replace(/-/g," ")}</h1>
+        <div className=' h-full shadow-border border-2 border-t-0 pt-8 overflow-auto'>
+            <h1 className='text-base text-headingColor font-semibold px-4 capitalize mb-5'>{subjectId.replace(/-/g," ")}</h1>
             <div>
                 <ul className='flex flex-col gap-2'>
                     {
                         tabs.map(i=>(
-                            <Link href={`/subject/${subjectId}/${i.link}`} key={i.name}>
-                                <li className={listItemStyle+` ${tab==i.link?"text-rose-500":" "}`}>
+                            <Link href={`/subject/${subjectId}/${i.link}`} key={i.name} className='px-2'>
+                                <li className={listItemStyle+` ${tab==i.link?"text-rose-500":" "} pl-2 py-2 rounded-sm hover:bg-slate-500/15`}>
                                     {i.icon}
                                     <span>{i.name}</span>
                                 </li>
                             </Link>
                         ))
                     }
-                    <li className='w-fit p-1 bg-rose-600 rounded-sm text-white cursor-pointer'>Take Test</li>
+                    {/* <li className='w-fit p-1 bg-rose-600 rounded-sm text-white cursor-pointer ml-4 '>Take Test</li> */}
                 </ul>
             </div>
         </div>

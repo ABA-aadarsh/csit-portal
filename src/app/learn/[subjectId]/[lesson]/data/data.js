@@ -89,7 +89,6 @@ export const getDefaultModuleParams =async ()=>{
                 )
             }
         })
-        console.log(list)
         return list
     } catch (error) {
         console.log(error)

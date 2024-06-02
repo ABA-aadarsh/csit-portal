@@ -7,15 +7,16 @@ import React from 'react'
 
 function page() {
   return (
+    <>
+      <Navbar/>
       <main>
-        {/* <FeedbackBar/> */}
-        <Navbar/>
         <section className='max-w-[1200px] mx-auto py-14'>
-          <div className='mb-10'>
-            <div className='w-2/5'>
+          <div className='mb-10 flex gap-2'>
+            <div className='w-2/5 shrink-0'>
               <h1 className='text-4xl font-semibold text-headingColor leading-[50px] mb-7'>Your choice of learning platform for <span className='text-rose-500'>CSIT</span></h1>
               <p className='text-lg font-medium text-balance'>Get interactive learning modules, downloadable notes, e-books, video resources and extensive questions database, everything you need to <span className='text-rose-600'>ace through 4 years of CSIT Learning Journey.</span></p>
             </div>
+            <img src='https://i.postimg.cc/wB1ZJMK4/Screenshot-2023-11-20-115057.png' className='w-full h-[300px] object-cover'/>
           </div>
           <div className='flex gap-10 items-start'>
             <div className='w-1/5'>
@@ -75,8 +76,9 @@ function page() {
         </section> */}
 
 
-        <Footer/>
       </main>
+      <Footer/>
+    </>
   )
 }
 
