@@ -11,6 +11,7 @@ import { Switch } from '@/components/ui/switch';
 import VideoBox from './boxes/VideoBox';
 import { componentHandler } from './boxes/hooks/componentHandler';
 import RecommendedLinksBox from './boxes/RecommendedLinksBox';
+import QABox from './boxes/qaBox';
 
 
 function scrollToElement(id) {
@@ -26,7 +27,7 @@ function Editor({datajson,setDatajson}) {
     datajson.map(i=>i.id)
   ) // store the ids of the objects and run the iteration on that basis so that unnecessary rendering of other componenet is not done when one componenet is being change
   const {
-    createComponent,deleteItem,moveComponent,updateCode,updateEqn,updateImage,updateText,updateTitle,updateVideo,updateRecommendedLinks
+    createComponent,deleteItem,moveComponent,updateCode,updateEqn,updateImage,updateText,updateTitle,updateVideo,updateRecommendedLinks, updateQA
   }=componentHandler({idsList,datajson,setDatajson,setIdsList})
   return (
     <div>
@@ -46,6 +47,7 @@ function Editor({datajson,setDatajson}) {
           <Button variant={"outline"} onClick={()=>{createComponent("recommendedLinks")}}>Recommended Links</Button>
           <Button variant={"outline"} onClick={()=>{createComponent("image")}}>Image</Button>
           <Button variant={"outline"} onClick={()=>{createComponent("code")}}>Code</Button>
+          <Button variant={"outline"} onClick={()=>{createComponent("qa")}}>QA</Button>
         </ul>
       </div>
       <div className='flex gap-3 min-h-[500px] relative py-2 mb-10'>
@@ -66,21 +68,6 @@ function Editor({datajson,setDatajson}) {
           </ul>
         </div>
         <div className='flex flex-col gap-4 flex-grow max-w-[740px] '>
-          {/* {
-            datajson.map((i,_)=>{
-              switch(i.type){
-                case "text":
-                  return <TextBox content={i.props.content} id={i.id} key={i.id}/>
-                  break;
-                case "eqn":
-                  return <EqnBox latex={i.latex} key={i.id}/>;
-                case "image":
-                  return <ImageBox key={i.id}></ImageBox>
-                default:
-                  return <Fragment key={i.id}></Fragment>;
-              }
-            })
-          } */}
           {
             idsList.map((id,_)=>{
               const object=datajson.find(x=>x.id==id)
@@ -107,6 +94,10 @@ function Editor({datajson,setDatajson}) {
                   />
                 case "recommendedLinks":
                   return <RecommendedLinksBox key={id} id={id} update={updateRecommendedLinks} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title} initialData={object.list}
+                  moveComponent={moveComponent}
+                />
+                case "qa":
+                  return <QABox key={id} id={id} update={updateQA} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
                   moveComponent={moveComponent}
                 />
                 default:

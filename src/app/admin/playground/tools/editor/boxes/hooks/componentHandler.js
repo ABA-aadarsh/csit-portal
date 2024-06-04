@@ -69,6 +69,16 @@ export const componentHandler=({idsList,setIdsList,datajson,setDatajson})=>{
                     list:[]
                 }
                 break
+            case "qa":
+              obj={
+                  type:"qa",
+                  title:"QA",
+                  q:"",
+                  a:"",
+                  qImg:"",
+                  aImg:""
+              }
+              break
             default:
                 return
         }
@@ -140,6 +150,16 @@ export const componentHandler=({idsList,setIdsList,datajson,setDatajson})=>{
             return [...prev]
           })
     }
+    const updateQA = ({id,q,qImg,a,aImg})=>{
+      setDatajson(prev=>{
+        const o = prev.findIndex(_=>_.id==id)
+        prev[o].q=q
+        prev[o].a=a
+        prev[o].qImg=qImg
+        prev[o].aImg=aImg
+        return [...prev]
+      })
+    }
     const moveComponent=({id,up})=>{
         const o = idsList.findIndex(_=>_==id)
         if((o==0 && up==true) || (o==(idsList.length-1) && up==false)){
@@ -153,5 +173,5 @@ export const componentHandler=({idsList,setIdsList,datajson,setDatajson})=>{
         }
         setIdsList([...idsList])
     }
-    return {createComponent,deleteItem,moveComponent,updateCode,updateEqn,updateImage,updateText,updateTitle,updateVideo,updateRecommendedLinks}
+    return {createComponent,deleteItem,moveComponent,updateCode,updateEqn,updateImage,updateText,updateTitle,updateVideo,updateRecommendedLinks,updateQA}
 }

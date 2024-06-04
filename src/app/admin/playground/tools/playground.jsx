@@ -35,10 +35,10 @@ function Playground({datajson,setDatajson}) {
             </div>
         </div>
         <div className=''>
-            <div className={`${activeTab=="preview"?"block":"hidden"}`}>
+            <div className={`${activeTab=="preview"?"block":"hidden"} max-w-[1200px]`}>
                 <Renderer data={previewData}/>
             </div>
-            <div className={`${activeTab=="editor"?"block":"hidden"}`}>
+            <div className={`${activeTab=="editor"?"block":"hidden"} `}>
                 <Editor datajson={datajson} setDatajson={setDatajson}/>
             </div>
         </div>

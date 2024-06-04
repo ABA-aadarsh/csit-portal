@@ -6,6 +6,7 @@ import EqnType from './renderBoxs/EqnType'
 import ImageType from './renderBoxs/ImageType'
 import RecommendedLinksType from './renderBoxs/RecommendedLinksType'
 import VideoType from './renderBoxs/VideoType'
+import QA from './renderBoxs/QA'
 
 function Renderer({data=[]}) {
   return (
@@ -26,6 +27,8 @@ function Renderer({data=[]}) {
                   return <RecommendedLinksType list={o.list} title={o.title}  key={o.id+Date.now()+_}/>
                 case "video":
                   return <VideoType list={o.list} key={o.id+Date.now()+_} title={o.title}/>
+                case "qa":
+                  return <QA key={o.id+Date.now()} data={{...o}}/>
                 default:
                   return <></>
               }
