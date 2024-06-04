@@ -11,10 +11,11 @@ function EqnBox(
         deleteItem = (id) => { },
         title,
         updateTitle = ({ id, title }) => { },
-        moveComponent
+        moveComponent,
+        initialData=""
     }
 ) {
-    const [latex, setLatex] = useState("")
+    const [latex, setLatex] = useState(initialData)
     return (
         <div className='border-2 shadow-border rounded-lg overflow-hidden'
             id={id}

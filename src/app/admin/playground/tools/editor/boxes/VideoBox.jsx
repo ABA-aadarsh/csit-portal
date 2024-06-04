@@ -11,11 +11,12 @@ function VideoBox(
         deleteItem = (id) => { },
         title,
         updateTitle = ({ id, title }) => { },
-        moveComponent
+        moveComponent,
+        initialData
     }
 ) {
     const [src,setSrc]=useState("")
-    const [list, setList] = useState([])
+    const [list, setList] = useState(initialData || [])
     useEffect(()=>{
         update({id,list})
     },[list])

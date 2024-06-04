@@ -10,7 +10,7 @@ import Latex from "react-latex-next"
 function QA({data}) {
   return (
     <Accordion type="single" collapsible>
-        <AccordionItem value="item-1" className="border-2 border-slate-400/50 rounded-md px-3 bg-gray-100/5 ">
+        <AccordionItem value="item-1" className="border-2 border-slate-400/50 rounded-md px-3 bg-gray-100/5 my-8 ">
             <AccordionTrigger>
                 <div className="w-full">
                     <p className=" text-left text-headingColor font-semibold text-lg mb-2">Question:</p>

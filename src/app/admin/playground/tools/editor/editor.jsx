@@ -79,18 +79,22 @@ function Editor({datajson,setDatajson}) {
                 case "eqn":
                   return <EqnBox key={id} id={id} update={updateEqn} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
                     moveComponent={moveComponent}
+                    initialData={object.latex}
                   />;
                 case "image":
                   return <ImageBox key={id} id={id} update={updateImage} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
                     moveComponent={moveComponent}
+                    initialData={object.props.src!=""?object.props : null}
                   />
                 case "code":
                   return <CodeBox key={id} id={id} update={updateCode} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
                     moveComponent={moveComponent}
+                    initialData={{code:object.code,language:object.language}}
                   />
                 case "video":
                   return <VideoBox key={id} id={id} update={updateVideo} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
                     moveComponent={moveComponent}
+                    initialData={object.list}
                   />
                 case "recommendedLinks":
                   return <RecommendedLinksBox key={id} id={id} update={updateRecommendedLinks} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title} initialData={object.list}
@@ -99,6 +103,7 @@ function Editor({datajson,setDatajson}) {
                 case "qa":
                   return <QABox key={id} id={id} update={updateQA} deleteItem={deleteItem} updateTitle={updateTitle} title={object.title}
                   moveComponent={moveComponent}
+                  initialData={{question:object.q,answer:object.a,questionImg:object.qImg,answerImg:object.aImg}}
                 />
                 default:
                   return <Fragment key={id}></Fragment>;

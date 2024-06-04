@@ -2,15 +2,18 @@
 import React, { useState } from 'react'
 import Topbar from './components/Topbar';
 
-function CodeBox({ id, update = ({ id, code, language }) => { }, title, updateTitle = ({ id, title }) => { }, deleteItem = (id) => { }, moveComponent }) {
-    const [code, setCode] = useState("")
+function CodeBox(
+    { id, update = ({ id, code, language }) => { }, title, updateTitle = ({ id, title }) => { }, deleteItem = (id) => { }, moveComponent,
+    initialData={code:"",language:"js"}
+    }) {
+    const [code, setCode] = useState(initialData.code)
     const languageOptions=[
         {lang:"Javascript",code:"javascript"},
         {lang:"HTML",code:"html"},
         {lang:"CSS",code:"css"},
         {lang:"C",code:"c"},
     ]
-    const [language,setLanguage]=useState(languageOptions[0].code)
+    const [language,setLanguage]=useState(initialData.language)
     return (
         <div className='border-2 shadow-border rounded-lg overflow-hidden'
             id={id}>

@@ -63,9 +63,9 @@ const Element = ({ attributes, children, element }) => {
       )
     case 'heading-three':
       return (
-        <h2 style={style} {...attributes} className='text-headingColor text-lg font-medium my-4'>
+        <h3 style={style} {...attributes} className='text-headingColor text-lg font-medium my-4'>
           {children}
-        </h2>
+        </h3>
       )
     case 'list-item':
       return (
@@ -81,7 +81,7 @@ const Element = ({ attributes, children, element }) => {
       )
     default:
       return (
-        <p style={style} {...attributes} className='text-base my-5 leading-[28px]'>
+        <p style={style} {...attributes} className='text-base my-3 leading-[26px]'>
           {children}
         </p>
       )

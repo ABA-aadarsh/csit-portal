@@ -7,9 +7,12 @@ const tailwindclasses = {
     input: "p-2 shadow-border border-2 rounded-md",
     inputSpan: "text-zinc-500"
 }
-function ImageBox({ id, update = ({ id, props }) => { } , title, updateTitle=({id,title})=>{},deleteItem=(id)=>{},moveComponent}) {
+function ImageBox({ 
+    id, update = ({ id, props }) => { } , title, updateTitle=({id,title})=>{},deleteItem=(id)=>{},moveComponent,
+    initialData
+}) {
     const [props, setProps] = useState(
-        {
+        initialData || {
             src: "/next.svg",
             width: 300,
             height: 300,
