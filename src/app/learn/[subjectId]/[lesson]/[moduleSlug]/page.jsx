@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '../_components/Sidebar'
 import { getLessons, getModuleData, getSidebarData, getModuleParams } from '../data/data'
-import Renderer from '../_components/renderer/renderer'
+import Renderer from '@/components/shared/renderer/renderer'
 import Navbar from '@/components/shared/Navbar'
 import Footer from '@/components/shared/Footer'
 

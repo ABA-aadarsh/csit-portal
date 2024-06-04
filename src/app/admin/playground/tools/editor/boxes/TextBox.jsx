@@ -100,10 +100,16 @@ const TextBox = ({
             <IconBtn format="heading-one" nature='block'>
               H1
             </IconBtn>
-            <IconBtn format="heading-two">
+            <IconBtn format="heading-two" nature='block'>
               H2
             </IconBtn>
-            <IconBtn format="block-quote" >
+            <IconBtn format="heading-three" nature='block'>
+              H3
+            </IconBtn>
+            <IconBtn format="advice" nature='block'>
+              advice
+            </IconBtn>
+            <IconBtn format="block-quote" nature="block">
               <BiSolidQuoteAltLeft/>
             </IconBtn>
             <IconBtn format={"numbered-list"} nature='block'>
@@ -220,7 +226,7 @@ const Element = ({ attributes, children, element }) => {
   switch (element.type) {
     case 'block-quote':
       return (
-        <blockquote style={style} {...attributes}>
+        <blockquote style={style} {...attributes} className='text-slate-500 pl-4 border-l-2 border-slate-700/55'>
           {children}
         </blockquote>
       )
@@ -232,19 +238,32 @@ const Element = ({ attributes, children, element }) => {
       )
     case 'heading-one':
       return (
-        <h1 style={style} {...attributes} className='text-2xl text-rose-500 font-medium my-3 tracking-wide'>
+        <h1 style={style} {...attributes} className='text-headingColor text-2xl font-semibold my-5'>
           {children}
         </h1>
       )
+    case "advice":
+      return (
+        <p style={style} {...attributes} className='my-3 bg-blue-600/10 text-base py-4 leading-[28px] text-headingColor pl-4 flex flex-col border-l-4 border-blue-700/70'>
+          <span className='font-semibold'>Best to know</span>
+          {children}
+        </p>
+      )
     case 'heading-two':
       return (
-        <h2 style={style} {...attributes}>
+        <h2 style={style} {...attributes} className='text-headingColor text-xl font-medium my-4'>
+          {children}
+        </h2>
+      )
+    case 'heading-three':
+      return (
+        <h2 style={style} {...attributes} className='text-headingColor text-lg font-medium my-4'>
           {children}
         </h2>
       )
     case 'list-item':
       return (
-        <li style={style} {...attributes} >
+        <li style={style} {...attributes} className='mb-2'>
           {children}
         </li>
       )
@@ -256,7 +275,7 @@ const Element = ({ attributes, children, element }) => {
       )
     default:
       return (
-        <p style={style} {...attributes} className='mb-2'>
+        <p style={style} {...attributes} className='text-base my-5 leading-[28px]'>
           {children}
         </p>
       )

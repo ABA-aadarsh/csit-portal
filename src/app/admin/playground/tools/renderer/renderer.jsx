@@ -26,11 +26,11 @@ function Renderer({data=[]}) {
                 case "eqn":
                   return <EqnType latex={o.latex}  key={o.id+Date.now()+_}/>
                 case "image":
-                  return <ImageType props={o.props}  key={o.id+Date.now()+_}/>
+                  return <ImageType props={o.props}  key={o.id+Date.now()+_} title={o.title}/>
                 case "recommendedLinks":
                   return <RecommendedLinksType list={o.list} title={o.title}  key={o.id+Date.now()+_}/>
                 case "video":
-                  return <VideoType list={o.list} key={o.id+Date.now()+_}/>
+                  return <VideoType list={o.list} key={o.id+Date.now()+_} title={o.title}/>
                 default:
                   return <></>
               }

@@ -26,7 +26,7 @@ function Sidebar({moduleList,lessons, subjectId, lessonId, moduleSlug}) {
                     }
                     const lessonSlug = getSlug(i.name)
                     return (
-                        <AccordionItem value={lessonSlug}>
+                        <AccordionItem value={lessonSlug} key={lessonSlug+i}>
                             <AccordionTrigger >
                                 <div className="flex items-center gap-2">
                                     <Notebook className='cursor-pointer' size={15}/>

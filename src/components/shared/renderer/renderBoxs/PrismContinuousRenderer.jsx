@@ -4,11 +4,11 @@ import Prism from "prismjs";
 import "prismjs/themes/prism-okaidia.css";
 import "prismjs/components/prism-c";
 
-export default function PrismLoader({checker,enable}) {
+export default function PrismLoader({enable}) {
   useEffect(() => {
     if(enable){
       Prism.highlightAll();
     }
-  }, [checker,enable]);
+  }, [enable]);
   return <div className="hidden"></div>;
 }

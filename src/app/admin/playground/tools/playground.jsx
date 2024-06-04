@@ -1,7 +1,7 @@
 "use client";
 import { Button } from '@/components/ui/button'
 import React, { useEffect, useState } from 'react'
-import Renderer from './renderer/renderer';
+import Renderer from '@/components/shared/renderer/renderer';
 import Editor from './editor/editor';
 
 
