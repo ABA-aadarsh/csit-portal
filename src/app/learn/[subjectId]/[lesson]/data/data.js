@@ -41,6 +41,7 @@ unstable_cache(
         try {
             await connectToDatabase()
             const res = await ModuleModel.findOne({sub:subjectId, lesson: lesson, slug: moduleSlug, viewAvailable: true}).select("content")
+            console.log("Module was fetched from database")
             return res.content
         } catch (error) {
             console.log(error.message)
@@ -61,6 +62,7 @@ unstable_cache(
         try {
             await connectToDatabase()
             const res = await ModuleModel.findOne({sub: subjectId, lesson: lesson, viewAvailable: true}).select("content")
+            console.log("Default module was fetched from database")
             return res.content          
         } catch (error) {
             console.log(error.message)
@@ -107,7 +109,6 @@ export const getModuleParams = async ()=>{
                 moduleSlug: i.slug
             }
         ))
-        console.log(list)
         return list
     } catch (error) {
         console.log(error.message)

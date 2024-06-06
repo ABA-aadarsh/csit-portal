@@ -20,14 +20,16 @@ function Sidebar({}) {
         {name:"Questions Bank",link:`questions-bank`,icon:<FaQuestion className='text-[22px]'/>}
     ]
     return (
-        <div className=' h-full shadow-border border-2 border-t-0 pt-8 overflow-auto'>
-            <h1 className='text-base text-headingColor font-semibold px-4 capitalize mb-5'>{subjectId.replace(/-/g," ")}</h1>
+        <div className=' h-full  border-t-0 pt-8 overflow-auto'>
+            <Link href={`/subject/${subjectId}/overview`}>
+            <h1 className='text-base text-headingColor font-semibold capitalize mb-5'>{subjectId.replace(/-/g," ")}</h1>
+            </Link>
             <div>
                 <ul className='flex flex-col gap-2'>
                     {
                         tabs.map(i=>(
-                            <Link href={`/subject/${subjectId}/${i.link}`} key={i.name} className='px-2'>
-                                <li className={listItemStyle+` ${tab==i.link?"text-rose-500":" "} pl-2 py-2 rounded-sm hover:bg-slate-500/15`}>
+                            <Link href={`/subject/${subjectId}/${i.link}`} key={i.name} className=''>
+                                <li className={listItemStyle+` ${tab==i.link?"text-rose-500":" "} hover:pl-3 duration-300 py-2 rounded-sm hover:bg-slate-500/15`}>
                                     {i.icon}
                                     <span>{i.name}</span>
                                 </li>

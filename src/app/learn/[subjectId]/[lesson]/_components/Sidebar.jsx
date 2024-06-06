@@ -13,7 +13,9 @@ import {
 function Sidebar({moduleList,lessons, subjectId, lessonId, moduleSlug}) {
   return (
     <div className='py-8 sticky top-[48px] max-h-[calc(100dvh-48px)] overflow-y-auto pr-4'>
-        <h2 className='text-headingColor font-semibold text-lg mb-6'><Book className='inline-block' /> {getName(subjectId)}</h2>
+        <Link href={`/subject/${subjectId}/overview`}>
+            <h2 className='text-headingColor font-semibold text-lg mb-6'><Book className='inline-block' /> {getName(subjectId)}</h2>
+        </Link>
         <Accordion type="multiple" defaultValue={[lessonId]}>
             {
                 lessons.map((i,lessonIndex)=>{
@@ -26,7 +28,7 @@ function Sidebar({moduleList,lessons, subjectId, lessonId, moduleSlug}) {
                     }
                     const lessonSlug = getSlug(i.name)
                     return (
-                        <AccordionItem value={lessonSlug} key={lessonSlug+i}>
+                        <AccordionItem value={lessonSlug} key={lessonSlug+i.name+lessonIndex}>
                             <AccordionTrigger >
                                 <div className="flex items-center gap-2">
                                     <Notebook className='cursor-pointer' size={15}/>

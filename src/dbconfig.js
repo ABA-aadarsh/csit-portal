@@ -1,27 +1,30 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const connection = {connected:false}
+let cachedDB = global.cachedDB;
 
-const connectToDatabase = async ()=>{
-  if(connection.connected!=false){
-    return
-  }
-
-  try{
-    if(!process.env.MONGODB_URI){
-      throw new Error("MONGODB_URI is not passed")
-    }
-    const db = await mongoose.connect(process.env.MONGODB_URI,{autoIndex:false})
-    console.log("database connection successful")
-    if(db.connections[0].readyState!=0){
-      connection.connected=true
-    }
-  }catch(error){
-    console.log(error)
-    process.exit()
-  }
+if (!cachedDB) {
+  cachedDB = global.cachedDB = { conn: false};
 }
 
+const connectToDatabase = async () => {
+  if (cachedDB.conn) {
+    return true
+  }
 
+  try {
+    const db = await mongoose.connect(process.env.MONGODB_URI, { autoIndex: false })
+    if(db.connections[0].readyState==1){
+      console.log("Database connection successful");
+      global.cachedDB.conn=true
+    }
+  } catch (error) {
+    console.log(error)
+    global.cachedDB.conn=false
+    cachedDB.conn = false;
+    throw error;
+  }
 
-export default connectToDatabase
+  return cachedDB.conn;
+};
+
+export default connectToDatabase;

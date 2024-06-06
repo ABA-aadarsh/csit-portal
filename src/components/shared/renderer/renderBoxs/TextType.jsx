@@ -50,20 +50,20 @@ const Element = ({ attributes, children, element }) => {
       )
     case "advice":
       return (
-        <p style={style} {...attributes} className='my-3 bg-blue-600/10 text-base py-4 leading-[28px] text-headingColor pl-4 flex flex-col border-l-4 border-blue-700/70'>
+        <p style={style} {...attributes} className='my-3 bg-blue-600/10 text-base py-4 leading-[28px] text-headingColor px-4 flex flex-col border-l-4 border-blue-700/70'>
           <span className='font-semibold'>Best to know</span>
           {children}
         </p>
       )
     case 'heading-two':
       return (
-        <h2 style={style} {...attributes} className='text-headingColor text-xl font-medium my-4'>
+        <h2 style={style} {...attributes} className='text-headingColor text-xl font-semibold my-5'>
           {children}
         </h2>
       )
     case 'heading-three':
       return (
-        <h3 style={style} {...attributes} className='text-headingColor text-lg font-medium my-4'>
+        <h3 style={style} {...attributes} className='text-headingColor text-lg font-semibold my-5'>
           {children}
         </h3>
       )
