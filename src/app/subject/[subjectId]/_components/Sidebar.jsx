@@ -14,13 +14,13 @@ function Sidebar({}) {
     const subjectId =paths.pop()
     const tabs=[
         {name:"Overview",link:`overview`,icon:<BiBook className='text-[22px]'/>},
-        {name:"Lab Reports",link:`reports`,icon:<ImLab className='text-[22px]'/>},
         {name:"Books",link:`books`,icon:<BiBook className='text-[22px]'/>},
+        {name:"Lab Reports",link:`reports`,icon:<ImLab className='text-[22px]'/>},
         {name:"Video Resources",link:`videos`,icon:<MdOutlineOndemandVideo className='text-[22px]'/>},
         {name:"Questions Bank",link:`questions-bank`,icon:<FaQuestion className='text-[22px]'/>}
     ]
     return (
-        <div className=' h-full  border-t-0 pt-8 overflow-auto'>
+        <div className='border-t-0 pt-8 max-h-[calc(100dvh-48px)] sticky top-[48px]'>
             <Link href={`/subject/${subjectId}/overview`}>
             <h1 className='text-base text-headingColor font-semibold capitalize mb-5'>{subjectId.replace(/-/g," ")}</h1>
             </Link>

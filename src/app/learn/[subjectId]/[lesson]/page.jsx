@@ -5,13 +5,21 @@ import Renderer from '@/components/shared/renderer/renderer'
 import Navbar from '@/components/shared/Navbar'
 import Footer from '@/components/shared/Footer'
 import NotFoundSVG from '@/components/shared/SVGComponents/NotFoundSVG'
-import { getSlug } from '@/lib/myUtils'
+import { getName, getSlug } from '@/lib/myUtils'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 
 export const generateStaticParams = async () => {
     const list = await getDefaultModuleParams()
     return list
+}
+
+export const generateMetadata= async ({params})=>{
+    const {subjectId,lesson}=params
+    return {
+        title:`Learn ${getName(lesson)} - ${getName(subjectId)} - CSIT Portal`,
+        description:`Clear your doubts in ${getName(lesson)} and ace your CSIT exam.`
+    }
 }
 
 export const dynamic = false

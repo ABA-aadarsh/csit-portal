@@ -2,10 +2,20 @@ import React from 'react'
 import { getSubjectData, getSubjectIds } from './getOverviewData'
 import Link from 'next/link'
 import { Book, BookOpen, Notebook } from 'lucide-react'
+import { getName } from '@/lib/myUtils'
 
 export const generateStaticParams=()=>{
     const list = getSubjectIds()
     return list
+}
+
+
+export const generateMetadata = async ({params})=>{
+  const {subjectId}=params
+  return {
+    title:`${getName(subjectId)} - Overview`,
+    description:`Learn ${getName(subjectId)} from CSIT Portal. All resources and informations available from syllabus to modules.`
+  }
 }
 
 
@@ -15,7 +25,7 @@ async function page({params}) {
   if(success){
     return (
         <main>
-          <article className='max-w-[1000px] mx-auto mt-10 mb-16'>
+          <article className='mx-auto mt-10 mb-16'>
               <div className='mb-8'>
                 <h1 className='text-2xl font-semibold text-headingColor mb-7 text-center'>{payload.name}</h1>
                 <div className='max-w-[700px] mx-auto grid grid-cols-[auto_auto] justify-between gap-y-2 text-headingColor'>

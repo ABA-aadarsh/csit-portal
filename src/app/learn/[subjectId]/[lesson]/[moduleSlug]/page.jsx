@@ -14,6 +14,14 @@ export const generateStaticParams = async ()=>{
     return list
 }
 
+export const generateMetadata= async ({params})=>{
+    const {subjectId,lesson,moduleSlug}=params
+    return {
+        title:`Module ${getName(moduleSlug)} - Lesson ${getName(lesson)} | ${getName(subjectId)} `,
+        description:`Clear your doubts in ${getName(lesson)} and ace your CSIT exam.`
+    }
+}
+
 export const dynamic = false
 
 async function page({params}) {

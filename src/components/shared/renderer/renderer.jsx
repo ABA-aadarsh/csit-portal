@@ -10,8 +10,7 @@ import QA from './renderBoxs/QA'
 
 function Renderer({data=[]}) {
   return (
-      <div>
-        <div className='py-4 mb-10 w-full pl-2'>
+        <article className='py-4 mb-10 w-full pl-2'>
           {
             data.map((o,_)=>{
               switch(o.type){
@@ -35,8 +34,7 @@ function Renderer({data=[]}) {
             })
           }
           <PrismLoader enable={true}/>
-        </div>
-      </div>
+        </article>
   )
 }
 

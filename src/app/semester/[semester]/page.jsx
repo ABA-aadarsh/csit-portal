@@ -6,7 +6,28 @@ import { getSemesterSubjects } from './getSemestersSubjects';
 import Footer from '@/components/shared/Footer';
 import { Book, BookOpen, GraduationCap } from 'lucide-react';
 
+const semesterNumberToText=(n)=>{
+    switch(n){
+        case "1": return "First"
+        case "2": return "Second"
+        case "3": return "Third"
+        case "4": return "Fourth"
+        case "5": return "Fifth"
+        case "6": return "Sixth"
+        case "7": return "Seventh"
+        case "8": return "Eight"
+        default: return "Not Valid";
+    }
+}
+
 export const dynamic = "force-static"
+
+export const generateMetadata = async ({params})=>{
+    const title = semesterNumberToText(params.semester)
+    return {
+        title: `${title} Semester | CSIT Portal`
+    }
+}
 
 export const generateStaticParams=()=>{
     const list = [1,2,3,4,5,6,7,8]
@@ -16,19 +37,7 @@ export const generateStaticParams=()=>{
 async function page({params}) {
     const semester=params.semester
     const {success,payload} = await getSemesterSubjects({semester})
-    const semesterNumberToText=(n)=>{
-        switch(n){
-            case "1": return "First"
-            case "2": return "Second"
-            case "3": return "Third"
-            case "4": return "Fourth"
-            case "5": return "Fifth"
-            case "6": return "Sixth"
-            case "7": return "Seventh"
-            case "8": return "Eight"
-            default: return "Not Valid";
-        }
-    }
+    
     if(success){
         const subjects=payload
         return (
