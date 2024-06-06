@@ -12,12 +12,15 @@ import Link from 'next/link';
 
 function Navbar() {
   return (
-    <header className='sticky top-0 bg-whitish z-10'>
+    <header className='sticky top-0 bg-whitish z-10
+    '>
         <nav
-            className='py-2 border-2 shadow-border h-[48px]'
+            className='py-2 border-2 shadow-border h-[48px] flex
+                mobile:px-4
+            '
         >
             <div
-                className='flex items-center gap-10 max-w-[1200px] m-auto relative'
+                className='w-full flex items-center gap-10 max-w-[1200px] m-auto relative mobile:gap-4'
             >
                 <div
                 >

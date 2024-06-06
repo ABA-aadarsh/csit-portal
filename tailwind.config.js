@@ -9,6 +9,9 @@ module.exports = {
   ],
   prefix: "",
   theme: {
+    "screens":{
+      "mobile": {"max":"375px"}
+    },
     container: {
       center: true,
       padding: "2rem",

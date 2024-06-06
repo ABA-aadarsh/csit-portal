@@ -43,7 +43,7 @@ async function page({params}) {
         return (
         <>
             <Navbar/>
-            <main className='min-h-dvh'>
+            <main className='min-h-dvh mobile:px-4'>
                     <div className='max-w-[1200px] mx-auto'>
                         <div className='pt-12 pb-8'>
                             <div className='flex items-center gap-4  text-headingColor justify-center mb-3'>
@@ -54,7 +54,7 @@ async function page({params}) {
                         </div>
                         <section className='py-14 mb-7'>
                             <h2 className='text-headingColor text-lg mb-5'>Subjects</h2>
-                            <div className='grid grid-cols-[500px_500px] gap-x-10 gap-y-10 '>
+                            <div className='grid grid-cols-[500px_500px] gap-x-10 gap-y-10 mobile:grid-cols-1 '>
                                 {
                                     subjects.length > 0 &&
                                     subjects.map(i=>(

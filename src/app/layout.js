@@ -20,10 +20,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${segeo.className}`}>
+    <html lang="en" className={`${segeo.className} mobile:text-[14px]`}>
       <body >
         {children}
-      
       <ToastContainer/>
       </body>
     </html>
