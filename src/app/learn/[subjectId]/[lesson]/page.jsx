@@ -34,7 +34,7 @@ async function page({ params }) {
     const siblingModules = { prev: null, next: null }
     if (moduleList) {
         const mList = moduleList.filter(i => i.lesson == params.lesson)
-        if (mList != -1 && mList.length != 1) siblingModules.next = mList[1].title
+        if (mList != -1 && mList.length > 1) siblingModules.next = mList[1].title
     }
     return (
         <>
