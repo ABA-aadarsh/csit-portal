@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { Book, BookOpen, Notebook } from 'lucide-react'
 import { getName } from '@/lib/myUtils'
 
-export const generateStaticParams=()=>{
-    const list = getSubjectIds()
+export const generateStaticParams=async()=>{
+    const list =await getSubjectIds()
     return list
 }
 

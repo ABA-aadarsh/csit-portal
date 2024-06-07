@@ -1,6 +1,7 @@
 import NotFoundSVG from '@/components/shared/SVGComponents/NotFoundSVG'
 import { getName } from '@/lib/myUtils'
 import React from 'react'
+import { getBooks, getSubjectIds } from './getBookData'
 
 export const generateMetadata= async ({params})=>{
   const {subjectId}= params
@@ -10,11 +11,31 @@ export const generateMetadata= async ({params})=>{
   }
 }
 
-function page() {
+export const generateStaticParams=async ()=>{
+  const list = await getSubjectIds()
+  return list
+}
+
+async function page({params}) {
+  const books = await getBooks(params.subjectId)
   return (
-    <div>
-      <NotFoundSVG/>
-    </div>
+    <main>
+      <h1>Books</h1>
+      <p>Learn more deeply first hand from the authors</p>
+      <div className='flex flex-col gap-4'>
+        {
+          books.map(b=>{
+            return (
+              <div>
+                <div>
+                  
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
+    </main>
   )
 }
 

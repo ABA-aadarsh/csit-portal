@@ -26,7 +26,7 @@ const SemesterAndSubjects=async ()=>{
         data[s-1].subs.push({name:sub.name})
     })
 
-    const revalidateAction = async ()=>{
+    const revalidateModules = async ()=>{
         "use server"
         try {
             revalidateTag("modules")
@@ -40,7 +40,7 @@ const SemesterAndSubjects=async ()=>{
     return (
         <div className='px-4'>
             <h1 className='text-center mb-8 text-lg'>Subjects</h1>
-            <RevalidateForm revalidateAction={revalidateAction}/>
+            <RevalidateForm revalidateAction={revalidateModules}/>
 
             {
                 data.map(({semester,subs})=>{
