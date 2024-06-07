@@ -32,7 +32,6 @@ async function page({params}) {
     if(moduleList){
         const m = moduleList.filter(i=>i.lesson == params.lesson)
         const mIndex = m.findIndex(i=>getSlug(i.title)==moduleSlug)
-        console.log(mIndex)
         if(mIndex!=-1){
             if(mIndex!=0) siblingModules.prev=m[mIndex-1].title
             if(mIndex!=m.length-1) siblingModules.next=m[mIndex+1].title
@@ -57,7 +56,7 @@ async function page({params}) {
     return (
         <>
             <Navbar/>
-            <div className='grid grid-cols-[350px_auto] gap-x-2 max-w-[1200px] mx-auto mb-6'>
+            <div className='grid grid-cols-[350px_auto] gap-x-2 max-w-[1200px] mx-auto mb-6 mobile:grid-cols-1'>
                 <Sidebar
                     lessons={lessons}
                     moduleList={moduleList}
@@ -65,7 +64,7 @@ async function page({params}) {
                     lessonId={params.lesson}
                     moduleSlug={moduleSlug}
                 />
-                <main className='px-10 mb-10'>
+                <main className='px-10 mb-10 mobile:px-4'>
                     {
                         moduleData &&
                         <>
@@ -79,17 +78,17 @@ async function page({params}) {
                                 </>
                             }
 
-                            <div className='my-8 w-full grid grid-cols-2 grid-row-[118px] gap-40'>
+                            <div className='my-8 w-full grid grid-cols-2 gap-40 mobile:gap-5 mobile:grid-cols-1 mobile:grid-rows-[70px_70px] -order-1'>
                                 <div>
                                     {
                                         siblingModules.prev &&
                                         <Link
                                             href={`/learn/${params.subjectId}/${params.lesson}/${getSlug(siblingModules.prev)}`}
-                                            className='bg-rose-500/90 hover:bg-rose-600 duration-200 p-5 rounded-md flex items-center text-white h-full w-full'
+                                            className='bg-rose-500/90 hover:bg-rose-600 duration-200 p-5 rounded-md flex items-center text-white h-full w-full moblie:p-2'
                                         >
                                             <div>
-                                                <p className='text-base text-dimishWhite'>Previous Module</p>
-                                                <p className='font-semibold text-[18px]'>{siblingModules.prev}</p>
+                                                <p className='text-base text-dimishWhite mobile:text-sm'>Previous Module</p>
+                                                <p className='font-semibold text-[18px] mobile:text-base'>{siblingModules.prev}</p>
                                             </div>
                                         </Link>
                                     }
@@ -99,11 +98,11 @@ async function page({params}) {
                                         siblingModules.next ?
                                         <Link
                                             href={`/learn/${params.subjectId}/${params.lesson}/${getSlug(siblingModules.next)}`}
-                                            className='bg-rose-500/90 hover:bg-rose-600 duration-200 p-5 rounded-md flex items-center justify-end text-white gap-5 justify-self-end h-full w-full'
+                                            className='bg-rose-500/90 hover:bg-rose-600 duration-200 p-5 rounded-md flex items-center justify-end text-white gap-5 justify-self-end h-full w-full mobile:p-2'
                                         >
                                             <div className='text-right'>
-                                                <p className='text-base text-dimishWhite'>Next Module</p>
-                                                <p className='font-semibold text-[18px]'>{siblingModules.next}</p>
+                                                <p className='text-base text-dimishWhite mobile:text-sm'>Next Module</p>
+                                                <p className='font-semibold text-[18px] mobile:text-base'>{siblingModules.next}</p>
                                             </div>
                                             <ChevronRight />
                                         </Link>:

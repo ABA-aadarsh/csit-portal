@@ -39,14 +39,14 @@ async function page({ params }) {
     return (
         <>
             <Navbar />
-            <div className='grid grid-cols-[350px_auto] gap-x-2 max-w-[1200px] mx-auto mb-6'>
+            <div className='grid grid-cols-[350px_auto] gap-x-2 max-w-[1200px] mx-auto mb-6 mobile:grid-cols-1'>
                 <Sidebar
                     lessons={lessons}
                     moduleList={moduleList}
                     subjectId={params.subjectId}
                     lessonId={params.lesson}
                 />
-                <main className='px-10'>
+                <main className='px-10 mobile:px-4'>
                     {
                         (moduleData && JSON.parse(moduleData)?.length > 0) ?
                             <>
@@ -60,7 +60,7 @@ async function page({ params }) {
                             </div>
                     }
 
-                    <div className='my-8 w-full grid grid-cols-2 grid-row-[118px] gap-40'>
+                    <div className='my-8 w-full grid grid-cols-2 mobile:grid-rows-[70px] mobile:grid-cols-1 gap-40 mobile:gap-0'>
                         <div>
                         </div>
                         <div className='flex items-center'>
@@ -68,11 +68,11 @@ async function page({ params }) {
                                 siblingModules.next ?
                                     <Link
                                         href={`/learn/${params.subjectId}/${params.lesson}/${getSlug(siblingModules.next)}`}
-                                        className='bg-rose-500/90 hover:bg-rose-600 duration-200 p-5 rounded-md flex items-center justify-end text-white gap-5 justify-self-end h-ful w-full'
+                                        className='bg-rose-500/90 hover:bg-rose-600 duration-200 p-5 rounded-md flex items-center justify-end text-white gap-5 justify-self-end h-ful w-full mobile:p-2'
                                     >
                                         <div className='text-right'>
-                                            <p className='text-base text-dimishWhite'>Next Module</p>
-                                            <p className='font-semibold text-[18px]'>{siblingModules.next}</p>
+                                            <p className='text-base text-dimishWhite mobile:text-sm'>Next Module</p>
+                                            <p className='font-semibold text-[18px] mobile:text-base'>{siblingModules.next}</p>
                                         </div>
                                         <ChevronRight />
                                     </Link> :

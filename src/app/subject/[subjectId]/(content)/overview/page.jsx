@@ -25,9 +25,9 @@ async function page({params}) {
   if(success){
     return (
         <main>
-          <article className='mx-auto mt-10 mb-16'>
+          <article className='mx-auto mt-10 mb-16 mobile:mt-6'>
               <div className='mb-8'>
-                <h1 className='text-2xl font-semibold text-headingColor mb-7 text-center'>{payload.name}</h1>
+                <h1 className='text-2xl font-semibold text-headingColor mb-7 text-center mobile:mb-10'>{payload.name}</h1>
                 <div className='max-w-[700px] mx-auto grid grid-cols-[auto_auto] justify-between gap-y-2 text-headingColor'>
                   <p className='block w-fit'>Code: <span className='font-semibold'>{payload?.subjectCode}</span></p>
                   <p className='block w-fit'>Semester : <span className='font-semibold'>{payload?.semester}</span></p>
@@ -36,10 +36,10 @@ async function page({params}) {
                 </div>
               </div>
 
-              <p className='text-headingColor leading-[30px] mb-5'>{payload?.desc}</p>
+              <p className='text-headingColor leading-[30px] mb-5 mobile:leading-[25px] mobile:mb-10'>{payload?.desc}</p>
 
               <Link href={`/learn/${params.subjectId}/${payload.lessons[0].name.toLowerCase().replace(/ /g,"-")}`}
-                className=' w-[170px] py-2 px-4 rounded-sm bg-white text-headingColor border-2 border-black/15  transition-all cursor-pointer duration-700 flex items-center gap-4 hover:bg-rose-500 hover:text-white ease-in-out hover:pl-6 hover:border-rose-500 mb-6'
+                className=' w-[170px] py-2 px-4 rounded-sm bg-white text-headingColor border-2 border-black/15  transition-all cursor-pointer duration-700 flex items-center gap-4 hover:bg-rose-500 hover:text-white ease-in-out hover:pl-6 hover:border-rose-500 mb-6 mobile:mb-10'
               >
                   <BookOpen size={20} />
                   <span>Start Now</span>

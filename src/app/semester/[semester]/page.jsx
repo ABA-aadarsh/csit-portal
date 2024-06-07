@@ -53,7 +53,7 @@ async function page({params}) {
                             <p className='text-headingColor text-center text-lg'>We are here to help <span className='font-semibold'>ace</span> your {semesterNumberToText(params.semester)} Semester</p>
                         </div>
                         <section className='py-14 mb-7'>
-                            <h2 className='text-headingColor text-lg mb-5'>Subjects</h2>
+                            <h2 className='text-headingColor text-lg mb-5 mobile:text-center'>Subjects</h2>
                             <div className='grid grid-cols-[500px_500px] gap-x-10 gap-y-10 mobile:grid-cols-1 '>
                                 {
                                     subjects.length > 0 &&
