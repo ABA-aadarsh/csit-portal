@@ -21,6 +21,7 @@
     "lucide-react": "^0.359.0",
     "mongoose": "^8.4.0",
     "next": "14.1.4",
+    "nodemailer": "^6.9.13",
     "prismjs": "^1.29.0",
     "react": "^18",
     "react-dom": "^18",

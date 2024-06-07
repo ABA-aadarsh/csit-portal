@@ -22,7 +22,7 @@ export const getSidebarData = unstable_cache(
     }
 ) 
 
-export const getLessons = async ({subjectId})=>{
+export const getLessons = unstable_cache( async ({subjectId})=>{
     try{
         const subjectName = getName(subjectId)
         const {subjects} = subjectData
@@ -32,7 +32,7 @@ export const getLessons = async ({subjectId})=>{
         console.log(error)
         return []
     }
-}
+})
 
 
 export const getModuleData = 

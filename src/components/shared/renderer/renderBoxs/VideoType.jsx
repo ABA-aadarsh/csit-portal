@@ -14,7 +14,7 @@ function VideoType({list=[], title}) {
   return (
     <div className='my-10'>
         <h1 className=' mb-6 text-xl text-headingColor font-semibold '>{title} by videos</h1>
-        <div className='bg-zinc-600 mb-6 w-full mobile:h-[180px]  max-h-[360px]'>
+        <div className='bg-zinc-600 mb-6 w-full mobile:h-[180px]  h-[360px]'>
             {
                 selectedVideo &&
                 <iframe className='w-full h-full' allowFullScreen="1"  src={`https://www.youtube.com/embed/${selectedVideo.videoId}?origin=*`} data-title="video_title" title="video_title" frameBorder="0"></iframe>

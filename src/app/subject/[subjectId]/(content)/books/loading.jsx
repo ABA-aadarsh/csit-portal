@@ -2,7 +2,9 @@ import React from 'react'
 
 function loading() {
   return (
-    <div>Book section is loading</div>
+    <div className='pt-10'>
+      <p className='text-center'>Book section is loading</p>
+    </div>
   )
 }
 

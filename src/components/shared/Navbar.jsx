@@ -7,8 +7,10 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+
 import { GoTriangleDown } from "react-icons/go";
 import Link from 'next/link';
+import FeedbackDialog from './FeedbackDialog';
 
 function Navbar() {
   return (
@@ -53,7 +55,7 @@ function Navbar() {
                     <Link href={"/about"} >About</Link> */}
                 </div>
                 <div className='absolute right-0'>
-                    <Button className="py-[2px] text-white bg-rose-500 hover:bg-rose-200 hover:text-rose-700 h-[35px]">Feedback</Button>
+                    <FeedbackDialog />
                 </div>
             </div>
         </nav>

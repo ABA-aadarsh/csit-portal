@@ -106,7 +106,7 @@ async function page({params}) {
                                             </div>
                                             <ChevronRight />
                                         </Link>:
-                                        <p className='text-right w-full'>End of lesson</p>
+                                        <p className='text-right w-full mobile:text-center'>End of lesson</p>
                                     }
                                 </div>
                             </div>

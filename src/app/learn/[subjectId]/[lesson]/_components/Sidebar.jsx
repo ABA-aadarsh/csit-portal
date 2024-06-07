@@ -90,14 +90,15 @@ function Sidebar({moduleList,lessons, subjectId, lessonId, moduleSlug}) {
                 lessons={lessons}
                 moduleList={moduleList}
                 moduleSlug={moduleSlug}
+                subjectId={subjectId}
             />
         </div>
 
-        <div className='hidden mobile:block px-4  sticky top-[48px]'>
+        <div className='hidden mobile:block px-4  sticky top-[48px] z-10'>
             <Sheet>
                 <SheetTrigger className="flex items-center gap-3 w-full bg-whitish border-b-2 py-2">
                     <Menu />
-                    <span>Menu</span>
+                    <span>Lesson Menu</span>
                 </SheetTrigger>
                 <SheetContent side="left" className="bg-white pb-10 overflow-auto">
                     <SheetHeader>
@@ -111,6 +112,7 @@ function Sidebar({moduleList,lessons, subjectId, lessonId, moduleSlug}) {
                         lessons={lessons}
                         moduleList={moduleList}
                         moduleSlug={moduleSlug}
+                        subjectId={subjectId}
                     />
                     </SheetHeader>
                 </SheetContent>

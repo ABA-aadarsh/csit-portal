@@ -59,7 +59,7 @@ function Sidebar({}) {
                     <SheetTrigger className="flex items-center gap-3 w-full bg-whitish border-b-2 py-2"
                     >
                         <Menu />
-                        <span>Menu</span>
+                        <span>Resource Menu</span>
                     </SheetTrigger>
                     <SheetContent side="left" className="bg-white">
                         <SheetHeader>
