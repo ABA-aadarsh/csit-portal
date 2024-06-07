@@ -3,17 +3,17 @@ import { Button } from '@/components/ui/button'
 import React from 'react'
 import { toast } from 'react-toastify'
 
-function RevalidateForm({revalidateAction}) {
+function RevalidateForm({revalidateAction, title=""}) {
   return (
     <div>
         <Button variant={"btnTypeA"} onClick={async ()=>{
               const res =  await revalidateAction()
               if(res){
-                toast.success("Modules Revalidated Globally")
+                toast.success(title +" Revalidated Globally")
               }else{
-                toast.error("Modules Revalidation Failed")
+                toast.error( title + " Revalidation Failed")
               }
-        }}>Revalidate Modules</Button>
+        }}>{title}</Button>
     </div>
   )
 }

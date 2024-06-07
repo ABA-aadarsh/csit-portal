@@ -44,7 +44,6 @@ unstable_cache(
             console.log("Module was fetched from database")
             return res.content
         } catch (error) {
-            console.log(error.message)
             return false
         }
     },

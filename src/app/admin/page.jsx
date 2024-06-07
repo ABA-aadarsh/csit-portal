@@ -1,6 +1,4 @@
 import React from 'react'
-import {promises as fs} from "fs"
-import path from 'path'
 import subjectData from "@/json/subjectData.json"
 import Link from 'next/link'
 import RevalidateForm from './_components/RevalidateForm'
@@ -36,12 +34,22 @@ const SemesterAndSubjects=async ()=>{
             return false
         }
     }
+    const revalidateBooks = async ()=>{
+        "use server"
+        try {
+            revalidateTag("books")
+            return true
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
 
     return (
         <div className='px-4'>
             <h1 className='text-center mb-8 text-lg'>Subjects</h1>
-            <RevalidateForm revalidateAction={revalidateModules}/>
-
+            <RevalidateForm revalidateAction={revalidateModules} title='Modules'/>
+            <RevalidateForm revalidateAction={revalidateBooks} title='Books'/>
             {
                 data.map(({semester,subs})=>{
                     return (

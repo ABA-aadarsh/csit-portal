@@ -1,8 +1,10 @@
 import connectToDatabase from "@/dbconfig";
 import BookModel from "@/models/bookModel";
 import { unstable_cache } from "next/cache";
+import subjectData from "@/json/subjectData.json"
+import { getSlug } from "@/lib/myUtils";
 
-export const getBooks = async (subjectId)=>{
+export const getBooks = unstable_cache(async (subjectId)=>{
     try {
         await connectToDatabase()
         const data = await BookModel.find({sub:subjectId})
@@ -11,8 +13,12 @@ export const getBooks = async (subjectId)=>{
         console.log(error.message)
         return []
     }
-}
-
+},
+    ["books"],
+    {
+        tags:["books"]
+    }
+)
 
 export const getSubjectIds = async ()=>{
     const {subjects} = subjectData

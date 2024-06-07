@@ -12,25 +12,25 @@ import {
   
 
 import Link from 'next/link';
-const listItemStyle="w-full cursor-pointer hover:bg-secondary/80 py-1 flex items-center gap-2"
+const listItemStyle="w-full cursor-pointer flex items-center gap-2"
 import React, { useState } from 'react'
 import { BiBook } from "react-icons/bi";
 import { ImLab } from "react-icons/im";
 import { MdOutlineOndemandVideo } from "react-icons/md";
 import { FaQuestion } from "react-icons/fa6";
 import { usePathname } from 'next/navigation';
-import { Menu } from "lucide-react";
+import { GanttChart, Menu } from "lucide-react";
 
 function Sidebar({}) {
     const paths=usePathname().split("/")
     const tab = paths.pop()
     const subjectId =paths.pop()
     const tabs=[
-        {name:"Overview",link:`overview`,icon:<BiBook className='text-[22px]'/>},
-        {name:"Books",link:`books`,icon:<BiBook className='text-[22px]'/>},
-        {name:"Lab Reports",link:`reports`,icon:<ImLab className='text-[22px]'/>},
-        {name:"Video Resources",link:`videos`,icon:<MdOutlineOndemandVideo className='text-[22px]'/>},
-        {name:"Questions Bank",link:`questions-bank`,icon:<FaQuestion className='text-[22px]'/>}
+        {name:"Overview",link:`overview`,icon:<GanttChart size={22} />, disabled:false},
+        {name:"Books",link:`books`,icon:<BiBook className='text-[22px]'/>, disabled:false},
+        {name:"Lab Reports",link:`reports`,icon:<ImLab className='text-[22px]'/>, disabled:true},
+        {name:"Video Resources",link:`videos`,icon:<MdOutlineOndemandVideo className='text-[22px]'/>, disabled:true},
+        {name:"Questions Bank",link:`questions-bank`,icon:<FaQuestion className='text-[22px]'/>, disabled:true}
     ]
     return (
         <>
@@ -42,8 +42,13 @@ function Sidebar({}) {
                     <ul className='flex flex-col gap-2'>
                         {
                             tabs.map(i=>(
-                                <Link href={`/subject/${subjectId}/${i.link}`} key={i.name} className=''>
-                                    <li className={listItemStyle+` ${tab==i.link?"text-rose-500":" "} hover:pl-3 duration-300 py-2 rounded-sm hover:bg-slate-500/15`}>
+                                <Link href={!i.disabled?`/subject/${subjectId}/${i.link}`:"#"} key={i.name} className='relative'>
+                                    {
+                                        i.disabled &&
+                                        <span className="absolute right-2 cursor-context-menu text-rose-500 text-[10px] font-semibold">Coming soon</span>
+                                    }
+
+                                    <li className={listItemStyle+` ${tab==i.link?"text-rose-500":" "} hover:pl-3 duration-300 py-2 rounded-sm hover:bg-slate-500/15 ${i.disabled && "hover:bg-transparent hover:pl-0 cursor-context-menu"}`}>
                                         {i.icon}
                                         <span>{i.name}</span>
                                     </li>
