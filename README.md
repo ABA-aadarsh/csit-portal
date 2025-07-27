@@ -11,4 +11,4 @@ GO to platform for all csit students
 
 Project abandoned.
 
-made [easecsit](www.easycsit.com) instead
+made [easycsit](www.easycsit.com) instead
